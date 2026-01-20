@@ -6,32 +6,40 @@
     <title>RNK | Word Nerd</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <a href="index.html" class="nav-logo">RNK</a>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="work.html">Work</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+<body class="home">
+    <!-- Header with Hero -->
+    <header id="home">
+        <div class="hero">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="assets/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <a href="work.html" class="btn">See My Work</a>
+            </div>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
-  <main class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-        <source src="assets/hero-video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-        <a href="work.html" class="btn">See My Work</a>
+    <!-- Navigation -->
+    <div class="sticky-wrapper">
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">RNK</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
-</main>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 RNK. All rights reserved.</p>
     </footer>
 
+    <!-- jQuery first, then our script -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

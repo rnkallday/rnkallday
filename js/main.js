@@ -1,29 +1,35 @@
 /* ================================
    MAIN.JS
-   ================================
-   
-   This file is mostly empty for now.
-   It's here so the structure is ready when you want to add:
-   - GSAP animations
-   - Scroll effects
-   - Interactive elements
-   - Anything else that needs JavaScript
-   
    ================================ */
 
-// Console message to confirm JS is loading
+// Only run scroll effects on home page
+if (document.body.classList.contains('home')) {
+
+    $(window).scroll(function() {
+        var heroHeight = $('header').height();
+        var yPosition = $(document).scrollTop();
+
+        if (yPosition <= heroHeight) {
+            var effectFactor = yPosition / heroHeight;
+            var rotation = effectFactor * (Math.PI / 2 - Math.asin((heroHeight - yPosition) / heroHeight));
+            $('.hero').css({
+                '-webkit-transform': 'rotateX(' + rotation + 'rad)',
+                'transform': 'rotateX(' + rotation + 'rad)',
+            })
+            .find('.overlay').css('opacity', effectFactor);
+        }
+
+        /**
+         * Sticky nav-bar
+         */
+        if (yPosition <= heroHeight) {
+            $('.nav').removeClass('fixed');
+        } else {
+            $('.nav').addClass('fixed');
+        }
+
+    });
+
+}
+
 console.log('RNK site loaded successfully.');
-
-// Example: Add 'scrolled' class to nav when page is scrolled
-// (Uncomment below if you want this effect)
-
-/*
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('.nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
-*/
