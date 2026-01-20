@@ -79,7 +79,12 @@ a:hover {
    HERO SECTION (Home Page)
    ================================ */
 
+/* ================================
+   HERO SECTION (Home Page)
+   ================================ */
+
 .hero {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
@@ -87,9 +92,25 @@ a:hover {
     min-height: 100vh;
     padding: 6rem 3rem 3rem;
     text-align: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 1;
     max-width: 600px;
 }
 
@@ -105,24 +126,6 @@ a:hover {
     color: #666;
     margin-bottom: 2rem;
 }
-
-.btn {
-    display: inline-block;
-    padding: 0.875rem 2rem;
-    background-color: #1a1a1a;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #333;
-    color: #fff;
-    transform: translateY(-2px);
 }
 
 /* ================================
