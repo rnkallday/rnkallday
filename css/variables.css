@@ -1,0 +1,48 @@
+/* ================================
+   WORD NERD BRAND SYSTEM
+   ================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* === COLORS === */
+  --color-cyan: #7DD4FC;
+  --color-mint: #86EFAC;
+  --color-black: #0F0F0F;
+  --color-white: #FAFAFA;
+  --color-gray: #525252;
+  --color-gray-light: #E5E5E5;
+  
+  /* Gradient from your hero */
+  --gradient-brand: linear-gradient(180deg, var(--color-cyan) 0%, var(--color-mint) 100%);
+  
+  /* === TYPOGRAPHY === */
+  --font-primary: 'Parkinsans', sans-serif;
+  
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 800;
+  
+  /* === FONT SIZES (fluid scaling) === */
+  --text-sm: clamp(0.875rem, 1vw, 1rem);
+  --text-base: clamp(1rem, 1.5vw, 1.125rem);
+  --text-lg: clamp(1.25rem, 2vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 2.5vw, 2rem);
+  --text-2xl: clamp(2rem, 4vw, 3rem);
+  --text-3xl: clamp(2.5rem, 6vw, 4.5rem);
+  --text-hero: clamp(3rem, 8vw, 6rem);
+  
+  /* === SPACING === */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  
+  /* === TRANSITIONS === */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+}

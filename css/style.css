@@ -1,7 +1,27 @@
 /* ================================
    CSS RESET & BASE STYLES
    ================================ */
+@import url('variables.css');
 
+/* === RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  line-height: 1.6;
+}
 * {
     margin: 0;
     padding: 0;
@@ -371,4 +391,142 @@ header#home {
     .hero-title {
         font-size: 2rem;
     }
+}/* ================================
+   WORK PAGE - SNAP SCROLL SECTIONS
+   ================================ */
+
+.work-container {
+  width: 100%;
+}
+
+.mini-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  
+  background-color: var(--color-white);
+}
+
+.mini-hero--alt {
+  direction: rtl;
+}
+
+.mini-hero--alt > * {
+  direction: ltr;
+}
+
+.mini-hero__content {
+  max-width: 540px;
+}
+
+.mini-hero__tag {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-cyan);
+}
+
+.mini-hero__title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-heavy);
+  line-height: 1.1;
+  margin-bottom: var(--space-sm);
+  color: var(--color-black);
+}
+
+.mini-hero__description {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray);
+  margin-bottom: var(--space-md);
+  max-width: 480px;
+}
+
+.mini-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
+  text-decoration: none;
+  padding: var(--space-sm) 0;
+  border-bottom: 3px solid var(--color-mint);
+  transition: var(--transition-base);
+}
+
+.mini-hero__cta:hover {
+  border-color: var(--color-cyan);
+  gap: var(--space-sm);
+}
+
+.mini-hero__cta-arrow {
+  transition: transform var(--transition-base);
+}
+
+.mini-hero__cta:hover .mini-hero__cta-arrow {
+  transform: translateX(4px);
+}
+
+.mini-hero__media {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.mini-hero__media img,
+.mini-hero__media video,
+.mini-hero__media iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mini-hero__accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-brand);
+  opacity: 0.6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .mini-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
+  
+  .mini-hero--alt {
+    direction: ltr;
+  }
+  
+  .mini-hero__content {
+    order: 1;
+  }
+  
+  .mini-hero__media {
+    order: 2;
+    height: 50vh;
+  }
 }
