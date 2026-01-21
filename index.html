@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNK | Word Nerd</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RNK | Word Nerd</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="home">
-    <!-- Header with Hero -->
-    <header id="home">
-        <div class="hero">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="assets/hero-video.mp4" type="video/mp4">
-            </video>
-            <div class="overlay"></div>
-            <div class="hero-content">
-                <a href="work.html" class="btn">See My Work</a>
-            </div>
-        </div>
-    </header>
+  <!-- Navigation -->
+  <div class="sticky-wrapper">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">RNK</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 
-    <!-- Navigation -->
-    <div class="sticky-wrapper">
-        <nav class="nav">
-            <a href="index.html" class="nav-logo">RNK</a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+  <!-- Hero Section -->
+  <header id="home">
+    <div class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="assets/hero-video.mp4" type="video/mp4">
+      </video>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Word <span>Nerd</span></h1>
+        <p class="hero-subtitle">Writer. Web Builder. Vinyl Enthusiast.</p>
+        <a href="work.html" class="hero-cta">
+          View My Work <span>→</span>
+        </a>
+      </div>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 RNK. All rights reserved.</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-gradient"></div>
+    <p>&copy; 2025 RNK. All rights reserved.</p>
+  </footer>
 
-    <!-- jQuery first, then our script -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* === COLORS === */
+  /* === CORE COLORS === */
   --color-cyan: #7DD4FC;
   --color-mint: #86EFAC;
   --color-black: #0F0F0F;
@@ -13,8 +13,16 @@
   --color-gray: #525252;
   --color-gray-light: #E5E5E5;
   
-  /* Gradient from your hero */
-  --gradient-brand: linear-gradient(180deg, var(--color-cyan) 0%, var(--color-mint) 100%);
+  /* === TINTED BACKGROUNDS (for 70/30 ratio) === */
+  --color-cyan-tint: #F0FAFF;
+  --color-mint-tint: #F0FDF4;
+  --color-warm-white: #FFFEF5;
+  
+  /* === GRADIENTS === */
+  --gradient-brand: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-mint) 100%);
+  --gradient-brand-vertical: linear-gradient(180deg, var(--color-cyan) 0%, var(--color-mint) 100%);
+  --gradient-brand-soft: linear-gradient(135deg, var(--color-cyan-tint) 0%, var(--color-mint-tint) 100%);
+  --gradient-hero: linear-gradient(135deg, #0F0F0F 0%, #1a1a2e 50%, #0F0F0F 100%);
   
   /* === TYPOGRAPHY === */
   --font-primary: 'Parkinsans', sans-serif;
@@ -26,6 +34,7 @@
   --font-weight-heavy: 800;
   
   /* === FONT SIZES (fluid scaling) === */
+  --text-xs: clamp(0.75rem, 0.8vw, 0.875rem);
   --text-sm: clamp(0.875rem, 1vw, 1rem);
   --text-base: clamp(1rem, 1.5vw, 1.125rem);
   --text-lg: clamp(1.25rem, 2vw, 1.5rem);
@@ -40,9 +49,21 @@
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 6rem;
+  --space-2xl: 8rem;
   
   /* === TRANSITIONS === */
   --transition-fast: 150ms ease;
   --transition-base: 300ms ease;
   --transition-slow: 500ms ease;
+  
+  /* === SHADOWS === */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  --shadow-color: 0 8px 30px rgba(125, 212, 252, 0.2);
+  
+  /* === BORDERS === */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
 }
