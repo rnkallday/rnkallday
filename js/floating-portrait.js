@@ -9,10 +9,10 @@
   
   // Configuration
   const config = {
-    moveStrength: 30,      // How much it moves with mouse (pixels)
-    scaleRange: 0.08,      // Scale variation (0.08 = 8%)
-    smoothing: 0.1,        // Movement smoothing (lower = smoother)
-    baseOpacity: 0.06,
+    moveStrength: 60,      // How much it moves with mouse (pixels)
+    scaleRange: 1,      // Scale variation (0.08 = 8%)
+    smoothing: 0.5,        // Movement smoothing (lower = smoother)
+    baseOpacity: 0.01,
     hoverOpacity: 0.1
   };
   
