@@ -677,7 +677,7 @@ header#home {
 .mini-hero__media img[src=""],
 .mini-hero__media img:not([src]) {
   background: var(--gradient-brand-soft);
-}/* ================================
+}/*/* ================================
    HAUNTING PORTRAIT (About Page)
    ================================ */
 
@@ -686,8 +686,8 @@ header#home {
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
-  will-change: opacity, transform;
+  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
 }
 
 .haunting-portrait img {
@@ -697,20 +697,14 @@ header#home {
   filter: grayscale(100%) contrast(1.1);
 }
 
-/* States controlled by JS */
 .haunting-portrait.is-visible {
-  opacity: var(--haunt-opacity, 0.08);
-}
-
-.haunting-portrait.fade-fast {
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: var(--haunt-opacity, 0.06);
 }
 
 .haunting-portrait.fade-slow {
-  transition: opacity 4s ease-in-out, transform 4s ease-in-out;
+  transition: opacity 5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hide on smaller screens */
 @media (max-width: 900px) {
   .haunting-portrait {
     display: none;

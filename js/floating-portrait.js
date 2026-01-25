@@ -1,35 +1,35 @@
 /* ================================
    HAUNTING PORTRAIT
-   Mysterious materialization effect
+   Slow, dreamy materialization
    ================================ */
 
 (function() {
   const portrait = document.querySelector('.haunting-portrait');
   if (!portrait) return;
 
-  // === CONFIGURATION ===
+  // === CONFIGURATION (CALMER) ===
   const config = {
-    // Opacity range (how visible it gets)
+    // Opacity range
     minOpacity: 0.03,
-    maxOpacity: 0.15,
+    maxOpacity: 0.12,
     
     // Size range (percentage of viewport)
-    minSize: 8,
-    maxSize: 90,
+    minSize: 15,
+    maxSize: 85,
     
-    // Timing (milliseconds)
-    minVisibleTime: 800,
-    maxVisibleTime: 4000,
-    minHiddenTime: 2000,
-    maxHiddenTime: 8000,
+    // Timing - MUCH slower
+    minVisibleTime: 3000,    // 3 seconds minimum
+    maxVisibleTime: 10000,   // 10 seconds maximum
+    minHiddenTime: 6000,     // 6 seconds minimum between appearances
+    maxHiddenTime: 20000,    // 20 seconds maximum
     
-    // Trigger sensitivity
-    scrollThreshold: 50,    // pixels of scroll to potentially trigger
-    mouseThreshold: 100,    // pixels of mouse movement to potentially trigger
-    triggerChance: 0.3,     // 30% chance to trigger on action
+    // Trigger sensitivity - LESS reactive
+    scrollThreshold: 200,    // Need more scroll to trigger
+    mouseThreshold: 400,     // Need more mouse movement
+    triggerChance: 0.15,     // Only 15% chance on action
     
     // Behavior
-    canInterrupt: true,     // Can new triggers interrupt current animation
+    canInterrupt: false,     // Let animations complete
   };
 
   // === STATE ===
@@ -51,23 +51,20 @@
   // === POSITIONS ===
   const getRandomPosition = () => {
     const positions = [
-      // Corners
-      { top: '5%', left: '5%', transform: 'translate(0, 0)' },
-      { top: '5%', right: '5%', transform: 'translate(0, 0)' },
-      { bottom: '5%', left: '5%', transform: 'translate(0, 0)' },
-      { bottom: '5%', right: '5%', transform: 'translate(0, 0)' },
+      // Corners - subtle
+      { top: '10%', left: '5%', transform: 'translate(0, 0)' },
+      { top: '10%', right: '5%', transform: 'translate(0, 0)' },
+      { bottom: '10%', left: '5%', transform: 'translate(0, 0)' },
+      { bottom: '10%', right: '5%', transform: 'translate(0, 0)' },
       // Edges
-      { top: '50%', left: '3%', transform: 'translateY(-50%)' },
-      { top: '50%', right: '3%', transform: 'translateY(-50%)' },
-      { top: '5%', left: '50%', transform: 'translateX(-50%)' },
-      { bottom: '10%', left: '50%', transform: 'translateX(-50%)' },
-      // Center (rare, dramatic)
+      { top: '50%', left: '0%', transform: 'translateY(-50%)' },
+      { top: '50%', right: '0%', transform: 'translateY(-50%)' },
+      // Center - rare and dramatic
       { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' },
-      // Random spots
-      { top: '20%', left: '15%', transform: 'translate(0, 0)' },
-      { top: '30%', right: '10%', transform: 'translate(0, 0)' },
-      { bottom: '25%', left: '20%', transform: 'translate(0, 0)' },
-      { top: '15%', right: '25%', transform: 'translate(0, 0)' },
+      // Off-center
+      { top: '30%', left: '20%', transform: 'translate(0, 0)' },
+      { top: '40%', right: '15%', transform: 'translate(0, 0)' },
+      { bottom: '30%', left: '10%', transform: 'translate(0, 0)' },
     ];
     return positions[randomInt(0, positions.length - 1)];
   };
@@ -77,14 +74,13 @@
     const size = random(config.minSize, config.maxSize);
     const opacity = random(config.minOpacity, config.maxOpacity);
     
-    // Larger = more transparent (ghostly), smaller = can be slightly more visible
+    // Larger = more transparent
     const adjustedOpacity = size > 50 
-      ? opacity * 0.5  // Large appearances are more subtle
+      ? opacity * 0.4
       : opacity;
     
-    // Random fade speed
-    const speeds = ['', 'fade-fast', 'fade-slow'];
-    const speed = speeds[randomInt(0, speeds.length - 1)];
+    // Favor slow fades (no more fast)
+    const speed = chance(0.7) ? 'fade-slow' : '';
     
     return { size, opacity: adjustedOpacity, speed };
   };
@@ -100,22 +96,19 @@
 
   // === SHOW PORTRAIT ===
   const show = () => {
-    if (isAnimating && !config.canInterrupt) return;
+    if (isAnimating) return;
     
-    // Clear any pending timeouts
     clearTimeout(hideTimeout);
     clearTimeout(showTimeout);
     
     isAnimating = true;
     
-    // Get random position and appearance
     const position = getRandomPosition();
     const appearance = getRandomAppearance();
     
-    // Clear previous positioning
     clearPosition();
     
-    // Apply new position
+    // Apply position
     Object.keys(position).forEach(key => {
       if (key !== 'transform') {
         portrait.style[key] = position[key];
@@ -123,21 +116,19 @@
     });
     
     // Apply size
-    const dimension = appearance.size + 'vw';
-    portrait.style.width = dimension;
+    portrait.style.width = appearance.size + 'vw';
     portrait.style.height = 'auto';
     
-    // Apply fade speed class
+    // Apply fade speed
     portrait.classList.remove('fade-fast', 'fade-slow');
     if (appearance.speed) {
       portrait.classList.add(appearance.speed);
     }
     
-    // Set opacity as CSS variable and show
     portrait.style.setProperty('--haunt-opacity', appearance.opacity);
     portrait.style.transform = position.transform;
     
-    // Small delay then show
+    // Gentle fade in
     requestAnimationFrame(() => {
       portrait.classList.add('is-visible');
       isVisible = true;
@@ -153,30 +144,26 @@
     portrait.classList.remove('is-visible');
     isVisible = false;
     
-    // Wait for transition to complete
-    const transitionTime = portrait.classList.contains('fade-slow') ? 4000 
-      : portrait.classList.contains('fade-fast') ? 500 
-      : 2000;
+    // Wait for fade out to complete
+    const transitionTime = portrait.classList.contains('fade-slow') ? 5000 : 3000;
     
     setTimeout(() => {
       isAnimating = false;
-    }, transitionTime);
-    
-    // Maybe schedule next appearance automatically
-    if (chance(0.3)) {
+      
+      // Schedule next appearance (always, but with long delay)
       const hiddenDuration = random(config.minHiddenTime, config.maxHiddenTime);
       showTimeout = setTimeout(show, hiddenDuration);
-    }
+    }, transitionTime);
   };
 
   // === TRIGGER CHECK ===
   const maybeTrigger = () => {
-    if (isVisible && !config.canInterrupt) return;
+    if (isAnimating) return;
     
     if (chance(config.triggerChance)) {
-      // Random delay so it doesn't feel directly connected
-      const delay = random(100, 1500);
-      setTimeout(show, delay);
+      // Long random delay - disconnects action from result
+      const delay = random(2000, 5000);
+      showTimeout = setTimeout(show, delay);
     }
   };
 
@@ -209,27 +196,25 @@
 
   // === INITIALIZE ===
   const init = () => {
-    // Set up event listeners
     window.addEventListener('scroll', handleScroll, { passive: true });
     document.addEventListener('mousemove', handleMouseMove, { passive: true });
     
-    // Initial appearance after landing on page
+    // Opening: slow, full-page presence
     setTimeout(() => {
-      // First appearance: full page, very subtle
       clearPosition();
       portrait.style.top = '50%';
       portrait.style.left = '50%';
       portrait.style.transform = 'translate(-50%, -50%)';
-      portrait.style.width = '80vw';
-      portrait.style.setProperty('--haunt-opacity', '0.04');
+      portrait.style.width = '70vw';
+      portrait.style.setProperty('--haunt-opacity', '0.035');
       portrait.classList.add('fade-slow');
       portrait.classList.add('is-visible');
       isVisible = true;
       isAnimating = true;
       
-      // Fade out after a few seconds
-      hideTimeout = setTimeout(hide, 3000);
-    }, 1500);
+      // Slow fade out
+      hideTimeout = setTimeout(hide, 6000);
+    }, 2500);
   };
 
   // === START ===
