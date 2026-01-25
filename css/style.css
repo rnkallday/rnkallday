@@ -677,133 +677,42 @@ header#home {
 .mini-hero__media img[src=""],
 .mini-hero__media img:not([src]) {
   background: var(--gradient-brand-soft);
-}
-/* ================================
-   FLOATING PORTRAIT (About Page)
+}/* ================================
+   HAUNTING PORTRAIT (About Page)
    ================================ */
 
-.floating-portrait {
+.haunting-portrait {
   position: fixed;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  width: clamp(200px, 25vw, 350px);
-  height: auto;
-  opacity: 0.5;
   pointer-events: none;
   z-index: 0;
-  transition: opacity var(--transition-slow);
-  animation: float 8s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+  will-change: opacity, transform;
 }
 
-.floating-portrait img {
+.haunting-portrait img {
   width: 100%;
-  height: auto;
-  filter: grayscale(100%) contrast(1.2);
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) contrast(1.1);
 }
 
-/* Floating animation */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(-50%) rotate(-2deg) scale(1);
-  }
-  25% {
-    transform: translateY(-52%) rotate(0deg) scale(1.02);
-  }
-  50% {
-    transform: translateY(-48%) rotate(2deg) scale(0.98);
-  }
-  75% {
-    transform: translateY(-51%) rotate(0deg) scale(1.01);
-  }
+/* States controlled by JS */
+.haunting-portrait.is-visible {
+  opacity: var(--haunt-opacity, 0.08);
 }
 
-/* Hover state - becomes slightly more visible when mouse is on page */
-body:hover .floating-portrait {
-  opacity: 0.5;
+.haunting-portrait.fade-fast {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.haunting-portrait.fade-slow {
+  transition: opacity 4s ease-in-out, transform 4s ease-in-out;
 }
 
 /* Hide on smaller screens */
 @media (max-width: 900px) {
-  .floating-portrait {
+  .haunting-portrait {
     display: none;
-  }
-}
-/* ================================
-   RESPONSIVE DESIGN
-   ================================ */
-
-@media (max-width: 900px) {
-  .mini-hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    padding: var(--space-lg) var(--space-md);
-    gap: var(--space-md);
-    min-height: auto;
-  }
-  
-  .mini-hero--alt {
-    direction: ltr;
-  }
-  
-  .mini-hero__content {
-    order: 1;
-    max-width: 100%;
-  }
-  
-  .mini-hero__media {
-    order: 2;
-    height: 50vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav {
-    padding: 0 var(--space-sm);
-  }
-
-  .nav-links {
-    gap: var(--space-sm);
-  }
-
-  .nav-links a {
-    font-size: var(--text-xs);
-  }
-
-  .hero-content {
-    padding: 0 var(--space-sm);
-    padding-bottom: var(--space-lg);
-  }
-
-  .page-content {
-    padding: calc(60px + var(--space-lg)) var(--space-sm) var(--space-md);
-  }
-  
-  .mini-hero {
-    padding: var(--space-md) var(--space-sm);
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-logo {
-    font-size: var(--text-base);
-  }
-
-  .nav-links {
-    gap: var(--space-xs);
-  }
-
-  .nav-links a {
-    font-size: 0.65rem;
-    letter-spacing: 0.05em;
-  }
-  
-  .mini-hero__media {
-    height: 40vh;
-  }
-  
-  .mini-hero__cta {
-    width: 100%;
-    justify-content: center;
   }
 }
