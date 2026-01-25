@@ -678,7 +678,57 @@ header#home {
 .mini-hero__media img:not([src]) {
   background: var(--gradient-brand-soft);
 }
+/* ================================
+   FLOATING PORTRAIT (About Page)
+   ================================ */
 
+.floating-portrait {
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: clamp(200px, 25vw, 350px);
+  height: auto;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--transition-slow);
+  animation: float 8s ease-in-out infinite;
+}
+
+.floating-portrait img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%) contrast(1.2);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%) rotate(-2deg) scale(1);
+  }
+  25% {
+    transform: translateY(-52%) rotate(0deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-48%) rotate(2deg) scale(0.98);
+  }
+  75% {
+    transform: translateY(-51%) rotate(0deg) scale(1.01);
+  }
+}
+
+/* Hover state - becomes slightly more visible when mouse is on page */
+body:hover .floating-portrait {
+  opacity: 0.09;
+}
+
+/* Hide on smaller screens */
+@media (max-width: 900px) {
+  .floating-portrait {
+    display: none;
+  }
+}
 /* ================================
    RESPONSIVE DESIGN
    ================================ */
