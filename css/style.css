@@ -678,6 +678,7 @@ header#home {
 .mini-hero__media img:not([src]) {
   background: var(--gradient-brand-soft);
 }/*/* ================================
+   /* ================================
    HAUNTING PORTRAIT (About Page)
    ================================ */
 
@@ -686,7 +687,7 @@ header#home {
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 6s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity;
 }
 
@@ -694,15 +695,11 @@ header#home {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: grayscale(100%) contrast(1.1);
+  filter: grayscale(100%) contrast(1.05);
 }
 
 .haunting-portrait.is-visible {
-  opacity: var(--haunt-opacity, 0.06);
-}
-
-.haunting-portrait.fade-slow {
-  transition: opacity 5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: var(--haunt-opacity, 0.05);
 }
 
 @media (max-width: 900px) {
