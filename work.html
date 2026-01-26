@@ -3,327 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work | RNK</title>
+  <title>Work - Word Nerd</title>
+  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="work-page">
-  <!-- Navigation -->
-  <div class="sticky-wrapper">
-    <nav class="nav">
-      <a href="index.html" class="nav-logo">RNK</a>
+<body>
+  
+  <!-- NAVIGATION (keep your existing nav here) -->
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">WORD NERD</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
+        <li><a href="work.html" class="nav-active">Work</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="work.html" class="active">Work</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 
-  <!-- Work Sections -->
-  <main class="work-container">
+  <!-- WORK HERO -->
+  <section class="work-hero">
+    <div class="container">
+      <h1 class="work-hero-title">Selected Work</h1>
+      <p class="work-hero-subtitle">Museum campaigns, editorial, branding, media, and experimental projects across digital and print.</p>
+    </div>
+  </section>
 
-    <!-- ================================
-         EXHIBITION WEBSITES
-         ================================ -->
+  <!-- FILTER BAR -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="editorial">Editorial</button>
+        <button class="filter-btn" data-filter="museums">Museums</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="media">Media</button>
+        <button class="filter-btn" data-filter="ai-tech">AI + Tech</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- 1. Kusama - GRADIENT MOMENT (opener) -->
-    <section class="mini-hero mini-hero--gradient">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Exhibition Website</span>
-        <h2 class="mini-hero__title">Yayoi Kusama: Infinite Love</h2>
-        <p class="mini-hero__description">
-          Digital experience for Seattle Art Museum's blockbuster exhibition. Immersive storytelling meets bold visual design.
-        </p>
-        <a href="https://kusama.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Project <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/kusama-preview.png" alt="Kusama exhibition website preview">
-      </div>
-    </section>
+  <!-- BENTO GRID -->
+  <section class="work-bento-section">
+    <div class="container">
+      <div class="work-bento-grid">
 
-    <!-- 2. YSL - Mint Tint -->
-    <section class="mini-hero mini-hero--alt mini-hero--tint-mint">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Exhibition Website</span>
-        <h2 class="mini-hero__title">Yves Saint Laurent</h2>
-        <p class="mini-hero__description">
-          Seattle Art Museum exhibition site celebrating the iconic fashion designer's legacy and artistic vision.
-        </p>
-        <a href="https://ysl.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Project <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/ysl-preview.png" alt="YSL exhibition website preview">
-      </div>
-    </section>
+        <!-- HERO TILE: SAM Inspire (2×2) -->
+        <article class="bento-tile bento-tile--2x2 bento-tile--hero bento-tile--museums" data-category="museums">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--museums">Museums</span>
+            <h2 class="bento-title">SAM Inspire Campaign</h2>
+            <p class="bento-description">Strategic digital campaign for Seattle Art Museum's membership initiative. Multi-page experience with interactive storytelling and donor engagement pathways.</p>
+            <a href="https://web.archive.org/web/20250907115838/https://inspire.site.seattleartmuseum.org/" target="_blank" class="bento-cta">
+              View Campaign
+              <svg class="bento-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="bento-tile-visual bento-visual--gradient"></div>
+        </article>
 
-    <!-- 3. Wyeth - White -->
-    <section class="mini-hero">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Exhibition Website</span>
-        <h2 class="mini-hero__title">Andrew Wyeth</h2>
-        <p class="mini-hero__description">
-          Digital companion for the Seattle Art Museum's Andrew Wyeth retrospective exhibition.
-        </p>
-        <a href="https://wyeth.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Project <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/wyeth-preview.png" alt="Wyeth exhibition website preview">
-      </div>
-    </section>
+        <!-- MEDIA TILES (Psychedelic Treatment) -->
+        
+        <!-- YouTube (2×1) -->
+        <article class="bento-tile bento-tile--2x1 bento-tile--media bento-tile--psychedelic" data-category="media">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--media">Media</span>
+            <h3 class="bento-title">Music Videos</h3>
+            <p class="bento-description">Visual storytelling through music. Experimental video production and narrative direction.</p>
+            <a href="https://www.youtube.com/channel/UC8Zd9DahLXaEVxSBcqJhYHw" target="_blank" class="bento-cta bento-cta--media">Watch Channel</a>
+          </div>
+          <div class="bento-tile-media">
+            <iframe 
+              src="https://www.youtube.com/embed/8jYSjGJuXHk" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              class="bento-iframe">
+            </iframe>
+          </div>
+        </article>
 
-    <!-- 4. SAM Inspire - Cyan Tint -->
-    <section class="mini-hero mini-hero--alt mini-hero--tint-cyan">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Campaign Website</span>
-        <h2 class="mini-hero__title">SAM Inspire</h2>
-        <p class="mini-hero__description">
-          Supporting Seattle Art Museum's fundraising and community engagement initiatives.
-        </p>
-        <a href="https://web.archive.org/web/20250907115838/https://inspire.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Project <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/sam-inspire-preview.png" alt="SAM Inspire website preview">
-      </div>
-    </section>
+        <!-- Spotify (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--media bento-tile--psychedelic" data-category="media">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--media">Media</span>
+            <h3 class="bento-title">Spotify</h3>
+            <p class="bento-description">Released tracks and artist profile.</p>
+          </div>
+          <div class="bento-tile-media">
+            <iframe 
+              style="border-radius:12px" 
+              src="https://open.spotify.com/embed/artist/1kG5WKLiiKHwMBkzqiFybL?utm_source=generator&theme=0" 
+              width="100%" 
+              height="200" 
+              frameBorder="0" 
+              allowfullscreen="" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy"
+              class="bento-iframe">
+            </iframe>
+          </div>
+        </article>
 
-    <!-- 5. MOHAI - White -->
-    <section class="mini-hero">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Museum Website</span>
-        <h2 class="mini-hero__title">MOHAI</h2>
-        <p class="mini-hero__description">
-          Website for the Museum of History & Industry, Seattle's hub for regional history and innovation.
-        </p>
-        <a href="https://mohai.org/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Project <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/mohai-preview.png" alt="MOHAI website preview">
-      </div>
-    </section>
+        <!-- SoundCloud (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--media bento-tile--psychedelic" data-category="media">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--media">Media</span>
+            <h3 class="bento-title">SoundCloud</h3>
+            <p class="bento-description">Extended catalog and experimental tracks.</p>
+          </div>
+          <div class="bento-tile-media">
+            <iframe 
+              width="100%" 
+              height="200" 
+              scrolling="no" 
+              frameborder="no" 
+              allow="autoplay" 
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/rian-kochel-280647786&color=%237DD4FC&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+              class="bento-iframe">
+            </iframe>
+          </div>
+        </article>
 
-    <!-- 6. Revealing Queer - Mint Tint -->
-    <section class="mini-hero mini-hero--alt mini-hero--tint-mint">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Exhibition Website</span>
-        <h2 class="mini-hero__title">Revealing Queer</h2>
-        <p class="mini-hero__description">
-          MOHAI exhibition exploring LGBTQ+ history and stories in the Pacific Northwest.
-        </p>
-        <a href="https://mohai.org/exhibits/revealing-queer/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Project <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/revealing-queer-preview.png" alt="Revealing Queer exhibition preview">
-      </div>
-    </section>
-    <!-- ================================
-         VIDEO
-         ================================ -->
+        <!-- EDITORIAL TILES (Cyan-dominant) -->
+        
+        <!-- HuffPost (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--editorial" data-category="editorial">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--editorial">Editorial</span>
+            <h3 class="bento-title">HuffPost</h3>
+            <p class="bento-description">Investigative journalism and long-form reporting on social issues and cultural trends.</p>
+            <a href="https://www.huffpost.com/author/rian-kochel" target="_blank" class="bento-cta">Read Articles</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--cyan"></div>
+        </article>
 
-    <!-- 7. YouTube - GRADIENT MOMENT (category shift) -->
-    <section class="mini-hero mini-hero--gradient">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Video</span>
-        <h2 class="mini-hero__title">YouTube</h2>
-        <p class="mini-hero__description">
-          Motion work, experiments, and more. Click through the video to explore the full channel.
-        </p>
-        <a href="https://www.youtube.com/channel/UC8Zd9DahLXaEVxSBcqJhYHw" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          Visit Channel <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <iframe 
-          src="https://www.youtube.com/embed/8jYSjGJuXHk" 
-          width="100%" 
-          height="100%" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </section>
-    <!-- ================================
-         WRITING
-         ================================ -->
+        <!-- The Sun Magazine (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--editorial" data-category="editorial">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--editorial">Editorial</span>
+            <h3 class="bento-title">The Sun Magazine</h3>
+            <p class="bento-description">Personal essay exploring identity, family, and the complexities of financial support.</p>
+            <a href="https://www.thesunmagazine.org/articles/21624-cash" target="_blank" class="bento-cta">Read Essay</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--cyan"></div>
+        </article>
 
-    <!-- 7. The Sun Magazine - GRADIENT MOMENT (category shift) -->
-    <section class="mini-hero mini-hero--gradient-dark">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Personal Essay</span>
-        <h2 class="mini-hero__title">Cash</h2>
-        <p class="mini-hero__description">
-          Published in The Sun Magazine. A personal essay exploring memory, loss, and the weight of small inheritances.
-        </p>
-        <a href="https://www.thesunmagazine.org/articles/21624-cash" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          Read Essay <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/sun-magazine-preview.png" alt="The Sun Magazine article preview">
-      </div>
-    </section>
+        <!-- MakeUseOf (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--editorial" data-category="editorial">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--editorial">Editorial</span>
+            <h3 class="bento-title">MakeUseOf</h3>
+            <p class="bento-description">Technology writing covering software, digital tools, and productivity.</p>
+            <a href="https://www.makeuseof.com/author/rian-kochel/" target="_blank" class="bento-cta">View Articles</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--cyan"></div>
+        </article>
 
-    <!-- 8. Fat Nugs - Cyan Tint -->
-    <section class="mini-hero mini-hero--alt mini-hero--tint-cyan">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Essay</span>
-        <h2 class="mini-hero__title">Pride Comes Once a Year, But at What Cost?</h2>
-        <p class="mini-hero__description">
-          Published in Fat Nugs Magazine. An exploration of Pride, commercialization, and community.
-        </p>
-        <a href="https://www.fatnugsmag.com/pridecomesonceayearbutatwhatcost/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          Read Essay <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/fatnugs-preview.png" alt="Fat Nugs Magazine article preview">
-      </div>
-    </section>
+        <!-- MUSEUMS TILES (50/50 cyan/mint mix) -->
+        
+        <!-- MOHAI (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--museums" data-category="museums">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--museums">Museums</span>
+            <h3 class="bento-title">MOHAI</h3>
+            <p class="bento-description">Museum of History & Industry website redesign and content strategy.</p>
+            <a href="https://mohai.org/" target="_blank" class="bento-cta">Visit Site</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--mint"></div>
+        </article>
 
-    <!-- 9. MakeUseOf - White -->
-    <section class="mini-hero">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Tech Writing</span>
-        <h2 class="mini-hero__title">MakeUseOf</h2>
-        <p class="mini-hero__description">
-          Technology and how-to articles for one of the web's leading tech publications.
-        </p>
-        <a href="https://www.makeuseof.com/author/rian-kochel/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Articles <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/makeuseof-preview.png" alt="MakeUseOf author page preview">
-      </div>
-    </section>
+        <!-- Revealing Queer (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--museums" data-category="museums">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--museums">Museums</span>
+            <h3 class="bento-title">Revealing Queer</h3>
+            <p class="bento-description">Exhibition microsite celebrating LGBTQ+ history and community stories.</p>
+            <a href="https://mohai.org/exhibits/revealing-queer/" target="_blank" class="bento-cta">Explore Exhibition</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--cyan"></div>
+        </article>
 
-    <!-- 10. HuffPost - Mint Tint -->
-    <section class="mini-hero mini-hero--alt mini-hero--tint-mint">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Journalism</span>
-        <h2 class="mini-hero__title">HuffPost</h2>
-        <p class="mini-hero__description">
-          Contributing writer covering culture, lifestyle, and social issues.
-        </p>
-        <a href="https://www.huffpost.com/author/rian-kochel" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Articles <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/huffpost-preview.png" alt="HuffPost author page preview">
-      </div>
-    </section>
+        <!-- BRANDING TILES (Mint-dominant) -->
+        
+        <!-- Kusama (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--branding" data-category="branding">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--branding">Branding</span>
+            <h3 class="bento-title">Kusama Exhibition</h3>
+            <p class="bento-description">Digital exhibition experience for Yayoi Kusama retrospective at SAM.</p>
+            <a href="https://kusama.site.seattleartmuseum.org/" target="_blank" class="bento-cta">View Site</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--mint"></div>
+        </article>
 
-    <!-- 11. The Nerd Stash - White -->
-    <section class="mini-hero">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Entertainment Writing</span>
-        <h2 class="mini-hero__title">The Nerd Stash</h2>
-        <p class="mini-hero__description">
-          Gaming, entertainment, and pop culture coverage.
-        </p>
-        <a href="https://thenerdstash.com/author/riankochel/" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          View Articles <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/nerdstash-preview.png" alt="The Nerd Stash author page preview">
-      </div>
-    </section>
+        <!-- YSL (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--branding" data-category="branding">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--branding">Branding</span>
+            <h3 class="bento-title">Yves Saint Laurent</h3>
+            <p class="bento-description">Exhibition microsite celebrating YSL's revolutionary fashion legacy.</p>
+            <a href="https://ysl.site.seattleartmuseum.org/" target="_blank" class="bento-cta">View Site</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--mint"></div>
+        </article>
 
-    <!-- ================================
-         MUSIC
-         ================================ -->
+        <!-- Wyeth (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--branding" data-category="branding">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--branding">Branding</span>
+            <h3 class="bento-title">Andrew Wyeth</h3>
+            <p class="bento-description">Exhibition site for American realist painter Andrew Wyeth.</p>
+            <a href="https://wyeth.site.seattleartmuseum.org/" target="_blank" class="bento-cta">View Site</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--mint"></div>
+        </article>
 
-    <!-- 12. Spotify - GRADIENT MOMENT (category shift) -->
-    <section class="mini-hero mini-hero--alt mini-hero--gradient">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Music</span>
-        <h2 class="mini-hero__title">Spotify</h2>
-        <p class="mini-hero__description">
-          Original music releases and artist profile.
-        </p>
-        <a href="https://open.spotify.com/artist/1kG5WKLiiKHwMBkzqiFybL" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          Listen on Spotify <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <iframe 
-          src="https://open.spotify.com/embed/artist/1kG5WKLiiKHwMBkzqiFybL?utm_source=generator&theme=0" 
-          width="100%" 
-          height="100%" 
-          frameBorder="0" 
-          allowfullscreen="" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-          loading="lazy">
-        </iframe>
-      </div>
-    </section>
+        <!-- Fat Nugs Magazine (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--branding" data-category="branding">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--branding">Branding</span>
+            <h3 class="bento-title">Fat Nugs Magazine</h3>
+            <p class="bento-description">Cultural commentary essay on Pride, capitalism, and queer identity.</p>
+            <a href="https://www.fatnugsmag.com/pridecomesonceayearbutatwhatcost/" target="_blank" class="bento-cta">Read Essay</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--mint"></div>
+        </article>
 
-    <!-- 13. SoundCloud - Cyan Tint -->
-    <section class="mini-hero mini-hero--tint-cyan">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Music</span>
-        <h2 class="mini-hero__title">SoundCloud</h2>
-        <p class="mini-hero__description">
-          Extended catalog, remixes, and unreleased tracks.
-        </p>
-        <a href="https://soundcloud.com/rian-kochel-280647786" target="_blank" rel="noopener noreferrer" class="mini-hero__cta">
-          Listen on SoundCloud <span class="mini-hero__cta-arrow">→</span>
-        </a>
-      </div>
-      <div class="mini-hero__media">
-        <iframe 
-          width="100%" 
-          height="100%" 
-          scrolling="no" 
-          frameborder="no" 
-          allow="autoplay" 
-          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/rian-kochel-280647786&color=%237DD4FC&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true">
-        </iframe>
-      </div>
-    </section>
+        <!-- The Nerd Stash (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--branding" data-category="branding">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--branding">Branding</span>
+            <h3 class="bento-title">The Nerd Stash</h3>
+            <p class="bento-description">Entertainment and gaming journalism covering pop culture trends.</p>
+            <a href="https://thenerdstash.com/author/riankochel/" target="_blank" class="bento-cta">View Articles</a>
+          </div>
+          <div class="bento-tile-visual bento-visual--mint"></div>
+        </article>
 
-    <!-- ================================
-         CAMPAIGN COLLATERAL
-         ================================ -->
+        <!-- Campaign Collateral (1×1) -->
+        <article class="bento-tile bento-tile--1x1 bento-tile--branding" data-category="branding">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--branding">Branding</span>
+            <h3 class="bento-title">Campaign Collateral</h3>
+            <p class="bento-description">Print and digital marketing materials for museum campaigns and events.</p>
+            <a href="assets/work/campaign-collateral.zip" download class="bento-cta bento-cta--download">
+              Download Portfolio
+              <svg class="bento-download" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 3V13M10 13L14 9M10 13L6 9M3 15V16C3 16.5304 3.21071 17.0391 3.58579 17.4142C3.96086 17.7893 4.46957 18 5 18H15C15.5304 18 16.0391 17.7893 16.4142 17.4142C16.7893 17.0391 17 16.5304 17 16V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="bento-tile-visual bento-visual--mint"></div>
+        </article>
 
-    <!-- 14. Campaign Materials - GRADIENT MOMENT (closer) -->
-    <section class="mini-hero mini-hero--alt mini-hero--gradient-dark">
-      <div class="mini-hero__content">
-        <span class="mini-hero__tag">Print & Digital Collateral</span>
-        <h2 class="mini-hero__title">Campaign Materials</h2>
-        <p class="mini-hero__description">
-          Exhibition campaign collateral including print materials, digital assets, and brand applications.
-        </p>
-        <a href="assets/work/campaign-collateral.zip" download class="mini-hero__cta">
-          Download Portfolio (ZIP) <span class="mini-hero__cta-arrow">↓</span>
-        </a>
+        <!-- AI/TECH TILE (Dark Inverted with Redacted Aesthetic) -->
+        <article class="bento-tile bento-tile--2x1 bento-tile--ai bento-tile--redacted" data-category="ai-tech">
+          <div class="bento-tile-content">
+            <span class="bento-tag bento-tag--ai">AI + Tech</span>
+            <h3 class="bento-title">AI Research & Development</h3>
+            <p class="bento-description bento-description--redacted">
+              Proprietary work in natural language processing, <span class="redacted-text">████████████</span> model training, and <span class="redacted-text">██████████</span> optimization. Full portfolio available under NDA.
+            </p>
+            <div class="bento-redacted-grid">
+              <div class="redacted-bar"></div>
+              <div class="redacted-bar"></div>
+              <div class="redacted-bar"></div>
+              <div class="redacted-bar"></div>
+              <div class="redacted-bar"></div>
+            </div>
+            <a href="contact.html" class="bento-cta bento-cta--ai">Request Access</a>
+          </div>
+          <div class="bento-neural-network">
+            <div class="neural-dot"></div>
+            <div class="neural-dot"></div>
+            <div class="neural-dot"></div>
+            <div class="neural-dot"></div>
+            <div class="neural-dot"></div>
+            <div class="neural-dot"></div>
+          </div>
+        </article>
+
       </div>
-      <div class="mini-hero__media">
-        <img src="assets/work/collateral-preview.png" alt="Campaign collateral preview">
-      </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
-
-  <!-- Footer -->
+  <!-- FOOTER (keep your existing footer here) -->
   <footer class="footer">
-    <div class="footer-gradient"></div>
-    <p>&copy; 2025 RNK. All rights reserved.</p>
+    <div class="container">
+      <p>&copy; 2024 Word Nerd. All rights reserved.</p>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>
