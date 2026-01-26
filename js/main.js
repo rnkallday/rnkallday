@@ -56,4 +56,57 @@
   handleScroll();
 
   console.log('RNK site loaded successfully.');
-})();
+})();/* ================================
+   BENTO GRID FILTER SYSTEM
+   ================================ */
+
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const bentoTiles = document.querySelectorAll('.bento-tile');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const filterValue = this.getAttribute('data-filter');
+
+      // Update active state
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+
+      // Filter tiles
+      bentoTiles.forEach(tile => {
+        const tileCategory = tile.getAttribute('data-category');
+
+        if (filterValue === 'all' || tileCategory === filterValue) {
+          // Show tile
+          tile.classList.remove('hidden');
+        } else {
+          // Hide tile
+          tile.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Optional: Add entrance animations on page load
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, index * 50); // Stagger animation
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  // Initially hide tiles for entrance animation
+  bentoTiles.forEach(tile => {
+    tile.style.opacity = '0';
+    tile.style.transform = 'translateY(20px)';
+    tile.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(tile);
+  });
+});
