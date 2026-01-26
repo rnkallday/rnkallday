@@ -1,35 +1,59 @@
 /* ================================
-   MAIN.JS
+   MAIN.JS - Vanilla JavaScript
    ================================ */
 
-// Only run scroll effects on home page
-if (document.body.classList.contains('home')) {
+(function() {
+  // Only run scroll effects on home page
+  if (!document.body.classList.contains('home')) {
+    console.log('RNK site loaded successfully.');
+    return;
+  }
 
-    $(window).scroll(function() {
-        var heroHeight = $('header').height();
-        var yPosition = $(document).scrollTop();
+  // Get elements
+  const header = document.querySelector('header');
+  const hero = document.querySelector('.hero');
+  const overlay = hero ? hero.querySelector('.overlay') : null;
+  const nav = document.querySelector('.nav');
 
-        if (yPosition <= heroHeight) {
-            var effectFactor = yPosition / heroHeight;
-            var rotation = effectFactor * (Math.PI / 2 - Math.asin((heroHeight - yPosition) / heroHeight));
-            $('.hero').css({
-                '-webkit-transform': 'rotateX(' + rotation + 'rad)',
-                'transform': 'rotateX(' + rotation + 'rad)',
-            })
-            .find('.overlay').css('opacity', effectFactor);
-        }
+  // Exit if elements don't exist
+  if (!header || !hero || !nav) {
+    console.log('RNK site loaded successfully.');
+    return;
+  }
 
-        /**
-         * Sticky nav-bar
-         */
-        if (yPosition <= heroHeight) {
-            $('.nav').removeClass('fixed');
-        } else {
-            $('.nav').addClass('fixed');
-        }
+  // Scroll handler
+  const handleScroll = () => {
+    const heroHeight = header.offsetHeight;
+    const yPosition = window.scrollY || window.pageYOffset;
 
-    });
+    if (yPosition <= heroHeight) {
+      // Calculate effect
+      const effectFactor = yPosition / heroHeight;
+      const rotation = effectFactor * (Math.PI / 2 - Math.asin((heroHeight - yPosition) / heroHeight));
+      
+      // Apply 3D rotation to hero
+      hero.style.webkitTransform = 'rotateX(' + rotation + 'rad)';
+      hero.style.transform = 'rotateX(' + rotation + 'rad)';
+      
+      // Fade in overlay
+      if (overlay) {
+        overlay.style.opacity = effectFactor;
+      }
+    }
 
-}
+    // Sticky nav
+    if (yPosition <= heroHeight) {
+      nav.classList.remove('fixed');
+    } else {
+      nav.classList.add('fixed');
+    }
+  };
 
-console.log('RNK site loaded successfully.');
+  // Add scroll listener with passive flag for performance
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Run once on load in case page is already scrolled
+  handleScroll();
+
+  console.log('RNK site loaded successfully.');
+})();
