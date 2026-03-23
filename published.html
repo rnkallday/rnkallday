@@ -9,169 +9,183 @@
     <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ========================
-           PUBLISHED PAGE STYLES
+           PUBLISHED — SCRAPBOOK
         ======================== */
 
         body {
-            background: linear-gradient(180deg, #0a2e1a 0%, #1a3d1a 25%, #2d4a0e 50%, #4a5a08 75%, #6b6b00 100%);
+            background-color: #4a9ec5;
+            background-image: url('assets/images/notebook-bg.png');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             min-height: 100vh;
         }
 
-        .published-grid {
+        /* Page header */
+        .page-header {
+            text-align: center;
+            padding: 6rem 1.5rem 2rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 0, 0, 0.15);
+            text-underline-offset: 6px;
+        }
+
+        .page-header p {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #444;
+        }
+
+        /* ===== SCRAPBOOK GRID ===== */
+        .scrapbook {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
+            grid-template-columns: 1fr 1fr;
+            max-width: 880px;
             margin: 0 auto;
-            padding: 0 1.5rem 4rem;
+            padding: 1rem 3rem 4rem;
+            gap: 3rem;
         }
 
-        .pub-card {
-            background: rgba(0, 0, 0, 0.65);
-            border: 1px solid rgba(134, 239, 172, 0.2);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+        /* ===== PHOTO CARDS ===== */
+        .scrapbook-photo {
+            background: #fff;
+            padding: 10px 10px 0;
+            box-shadow: 3px 4px 14px rgba(0, 0, 0, 0.22);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
-        .pub-card:hover {
-            transform: scale(1.03);
-            border-color: rgba(200, 220, 40, 0.6);
-            box-shadow: 0 0 24px rgba(134, 239, 172, 0.2),
-                        0 0 48px rgba(200, 220, 40, 0.1);
-        }
-
-        .pub-card a {
+        .scrapbook-photo a {
             text-decoration: none;
             color: inherit;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .pub-card-image {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
             display: block;
-            filter: grayscale(20%) brightness(0.9);
-            transition: filter 0.3s ease;
         }
 
-        .pub-card:hover .pub-card-image {
-            filter: grayscale(0%) brightness(1);
+        .scrapbook-photo img {
+            width: 100%;
+            display: block;
         }
 
-        .pub-card-body {
-            padding: 1.25rem 1.5rem 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        /* Rotations — scrapbook feel */
+        .scrapbook-photo:nth-child(1) { transform: rotate(-2.5deg); }
+        .scrapbook-photo:nth-child(2) { transform: rotate(1.8deg); }
+        .scrapbook-photo:nth-child(3) { transform: rotate(1.2deg); }
+        .scrapbook-photo:nth-child(4) { transform: rotate(-1.5deg); }
+
+        .scrapbook-photo:hover {
+            transform: rotate(0deg) scale(1.06) !important;
+            z-index: 10;
+            box-shadow: 5px 8px 28px rgba(0, 0, 0, 0.3);
         }
 
-        .pub-card-publication {
+        /* ===== TAPE STRIPS ===== */
+        .scrapbook-photo::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(1deg);
+            width: 72px;
+            height: 22px;
+            background: rgba(220, 215, 175, 0.55);
+            border: 1px solid rgba(200, 195, 155, 0.25);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .scrapbook-photo:nth-child(2)::before {
+            transform: translateX(-50%) rotate(-2deg);
+            background: rgba(175, 210, 200, 0.5);
+            border-color: rgba(155, 195, 185, 0.25);
+        }
+
+        .scrapbook-photo:nth-child(3)::before {
+            transform: translateX(-50%) rotate(0.5deg);
+            width: 66px;
+            background: rgba(210, 185, 200, 0.5);
+            border-color: rgba(195, 170, 185, 0.25);
+        }
+
+        .scrapbook-photo:nth-child(4)::before {
+            transform: translateX(-50%) rotate(-1deg);
+            background: rgba(195, 215, 175, 0.5);
+            border-color: rgba(180, 200, 160, 0.25);
+        }
+
+        /* ===== CAPTIONS ===== */
+        .scrapbook-caption {
+            padding: 10px 4px 14px;
+            text-align: center;
+        }
+
+        .scrapbook-pub {
             font-family: 'Parkinsans', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.65rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            background: linear-gradient(135deg, #86EFAC, #d4e040);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #999;
+            margin-bottom: 3px;
         }
 
-        .pub-card-title {
+        .scrapbook-title {
             font-family: 'Parkinsans', sans-serif;
-            font-size: 1.15rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: #e8e8d0;
+            color: #1a1a1a;
             line-height: 1.3;
         }
 
-        .pub-card-description {
-            font-family: 'Parkinsans', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 400;
-            color: #b8b89a;
-            line-height: 1.6;
-            margin-top: 0.25rem;
-        }
-
-        .pub-card-cta {
-            font-family: 'Parkinsans', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #86EFAC;
-            margin-top: auto;
-            padding-top: 0.75rem;
-            transition: color 0.3s ease;
-        }
-
-        .pub-card:hover .pub-card-cta {
-            color: #d4e040;
-        }
-
-        /* Back link */
+        /* ===== BACK LINK ===== */
         .back-link-wrapper {
-            max-width: 1100px;
+            max-width: 880px;
             margin: 0 auto;
-            padding: 0 1.5rem 4rem;
+            padding: 0 3rem 4rem;
         }
 
         .back-link {
             display: inline-block;
             font-family: 'Parkinsans', sans-serif;
             font-size: 0.9rem;
-            font-weight: 600;
-            color: #86EFAC;
+            font-weight: 700;
+            color: #1a1a1a;
             text-decoration: none;
-            transition: color 0.3s ease;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: background 0.3s ease;
         }
 
         .back-link:hover {
-            color: #d4e040;
+            background: rgba(255, 255, 255, 0.9);
         }
 
-        /* Page header */
-        .page-header {
-            text-align: center;
-            padding: 6rem 1.5rem 3rem;
-        }
-
-        .page-header h1 {
-            font-family: 'Parkinsans', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.25rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #86EFAC, #d4e040);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.75rem;
-        }
-
-        .page-header p {
-            font-family: 'Parkinsans', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 400;
-            color: #b8b89a;
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .published-grid {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .scrapbook {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 0 1rem 3rem;
+                max-width: 360px;
+                padding: 1rem 1.5rem 3rem;
+                gap: 2.5rem;
             }
 
             .page-header {
-                padding: 5rem 1rem 2rem;
+                padding: 5rem 1rem 1.5rem;
+            }
+
+            .back-link-wrapper {
+                padding: 0 1.5rem 3rem;
             }
         }
     </style>
@@ -195,64 +209,56 @@
     <main class="page-content">
 
         <div class="page-header">
-            <h1>Work I've Written</h1>
-            <p>  for national and digital publications.</p>
+            <h1>Published Work</h1>
+            <p>Byline pieces across national and digital publications.</p>
         </div>
 
-        <div class="published-grid">
+        <div class="scrapbook">
 
-            <!-- HUFFINGTON POST -->
-            <article class="pub-card">
+            <!-- LEFT PAGE, TOP -->
+            <div class="scrapbook-photo">
                 <a href="https://www.huffpost.com/entry/small-town-gay-coming-out_n_64090adae4b06acd7c83fe42" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/huffpost-preview.png" alt="HuffPost article preview" class="pub-card-image">
-                    <div class="pub-card-body">
-                        <span class="pub-card-publication">HuffPost</span>
-                        <h2 class="pub-card-title">It Takes One To Know One</h2>
-                        <p class="pub-card-description">Personal essay on navigating identity and visibility in a place too small to hide.</p>
-                        <span class="pub-card-cta">Read on HuffPost →</span>
+                    <img src="assets/images/published/huffpost-preview.png" alt="HuffPost article preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">HuffPost</div>
+                        <div class="scrapbook-title">Small Town Gay</div>
                     </div>
                 </a>
-            </article>
+            </div>
 
-            <!-- THE SUN MAGAZINE -->
-            <article class="pub-card">
+            <!-- RIGHT PAGE, TOP -->
+            <div class="scrapbook-photo">
                 <a href="https://www.thesunmagazine.org/articles/21624-cash" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/sun-magazine-preview.png" alt="The Sun Magazine article preview" class="pub-card-image">
-                    <div class="pub-card-body">
-                        <span class="pub-card-publication">The Sun Magazine</span>
-                        <h2 class="pub-card-title">Cash</h2>
-                        <p class="pub-card-description">A chicken shit story I wrote for one of the most respected independent literary magazines in the United States. It's the second story from the top of the page.</p>
-                        <span class="pub-card-cta">Read in The Sun →</span>
+                    <img src="assets/images/published/sun-magazine-preview.png" alt="The Sun Magazine article preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">The Sun Magazine</div>
+                        <div class="scrapbook-title">Cash</div>
                     </div>
                 </a>
-            </article>
+            </div>
 
-            <!-- MUO (MAKEUSEOF) -->
-            <article class="pub-card">
+            <!-- LEFT PAGE, BOTTOM -->
+            <div class="scrapbook-photo">
                 <!-- ⚠️ REPLACE # WITH CORRECT MUO URL -->
-                <a href="https://www.makeuseof.com/author/rian-kochel/" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/makeuseof-preview.png" alt="MakeUseOf article preview" class="pub-card-image">
-                    <div class="pub-card-body">
-                        <span class="pub-card-publication">MakeUseOf</span>
-                        <h2 class="pub-card-title">Tech &amp; How-To Articles</h2>
-                        <p class="pub-card-description"> I was a feature writer for one of the web's largest how-to and consumer tech publications. I pitched and wrote stories about tech in broad strokes, but my main focus was helping our readership stay up-to-date with emerging trends and tools in AI.</p>
-                        <span class="pub-card-cta">Read on MakeUseOf →</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/published/makeusdof-preview.png" alt="MakeUseOf article preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">MakeUseOf</div>
+                        <div class="scrapbook-title">Tech &amp; How-To</div>
                     </div>
                 </a>
-            </article>
+            </div>
 
-            <!-- THE NERD STASH -->
-            <article class="pub-card">
+            <!-- RIGHT PAGE, BOTTOM -->
+            <div class="scrapbook-photo">
                 <a href="https://thenerdstash.com/author/riankochel/" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/nerdstash-preview.png" alt="The Nerd Stash author page preview" class="pub-card-image">
-                    <div class="pub-card-body">
-                        <span class="pub-card-publication">The Nerd Stash</span>
-                        <h2 class="pub-card-title">Gaming &amp; Culture Coverage</h2>
-                        <p class="pub-card-description">A mixed bag byline archive of human interest stories, politcal news, and pop culture for a digital entertainment outlet.</p>
-                        <span class="pub-card-cta">View all articles →</span>
+                    <img src="assets/images/published/nerstash-preview.png" alt="The Nerd Stash author page preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">The Nerd Stash</div>
+                        <div class="scrapbook-title">Gaming &amp; Culture</div>
                     </div>
                 </a>
-            </article>
+            </div>
 
         </div>
 
