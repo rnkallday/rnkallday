@@ -466,6 +466,12 @@ header#home {
    WORK PAGE - SHOWCASE
    ================================ */
 
+/* --- Float animation for work cards --- */
+@keyframes gentle-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
 .work-showcase {
   min-height: 100vh;
   display: flex;
@@ -491,27 +497,52 @@ header#home {
 /* === Clickable Image Cards === */
 .work-card {
   display: block;
-  transition: transform var(--transition-base), filter var(--transition-base);
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: gentle-float 5s ease-in-out infinite;
 }
 
+/* Staggered float timing — organic, not synchronized */
+.work-card:nth-child(1) {
+  animation-delay: 0s;
+  animation-duration: 5s;
+}
+
+.work-card:nth-child(2) {
+  animation-delay: -1.7s;
+  animation-duration: 5.8s;
+}
+
+.work-card:nth-child(3) {
+  animation-delay: -3.2s;
+  animation-duration: 5.3s;
+}
+
+/* Triple-layered drop shadows for real depth */
 .work-card img {
   max-height: 55vh;
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.5));
-  transition: filter var(--transition-base), transform var(--transition-base);
+  filter:
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 30px 60px rgba(0, 0, 0, 0.2));
+  transition: filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .work-card:hover {
-  transform: scale(1.06) translateY(-10px);
+  transform: scale(1.08) translateY(-12px);
 }
 
+/* Hover: shadows expand + cyan/mint glow */
 .work-card:hover img {
-  filter: drop-shadow(0 15px 40px rgba(125, 212, 252, 0.45))
-         drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+  filter:
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35))
+    drop-shadow(0 18px 40px rgba(125, 212, 252, 0.35))
+    drop-shadow(0 40px 80px rgba(134, 239, 172, 0.12));
 }
 
 /* ================================
@@ -704,6 +735,12 @@ header#home {
   .work-card img {
     max-height: 30vh;
     max-width: 70vw;
+  }
+
+  /* Subtler float on mobile */
+  @keyframes gentle-float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -6px; }
   }
 }
 

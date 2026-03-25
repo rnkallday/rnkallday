@@ -60,10 +60,19 @@
         .scrapbook-photo {
             background: #fff;
             padding: 10px 10px 0;
-            box-shadow: 3px 4px 14px rgba(0, 0, 0, 0.22);
             position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+
+            /* Triple-layer shadow: contact + ambient + far spread */
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.14),
+                0 6px 14px rgba(0, 0, 0, 0.16),
+                0 16px 40px rgba(0, 0, 0, 0.12);
+
+            transition:
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .scrapbook-photo a {
@@ -75,6 +84,7 @@
         .scrapbook-photo img {
             width: 100%;
             display: block;
+            border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         /* Rotations — scrapbook feel */
@@ -83,10 +93,15 @@
         .scrapbook-photo:nth-child(3) { transform: rotate(1.2deg); }
         .scrapbook-photo:nth-child(4) { transform: rotate(-1.5deg); }
 
+        /* Hover: straighten, lift, and expand shadow */
         .scrapbook-photo:hover {
-            transform: rotate(0deg) scale(1.06) !important;
+            transform: rotate(0deg) scale(1.06) translateY(-8px) !important;
             z-index: 10;
-            box-shadow: 5px 8px 28px rgba(0, 0, 0, 0.3);
+            box-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.08),
+                0 10px 24px rgba(0, 0, 0, 0.14),
+                0 28px 56px rgba(0, 0, 0, 0.12),
+                0 45px 90px rgba(0, 0, 0, 0.06);
         }
 
         /* ===== TAPE STRIPS ===== */
@@ -102,173 +117,9 @@
             border: 1px solid rgba(200, 195, 155, 0.25);
             z-index: 3;
             pointer-events: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .scrapbook-photo:nth-child(2)::before {
             transform: translateX(-50%) rotate(-2deg);
-            background: rgba(175, 210, 200, 0.5);
-            border-color: rgba(155, 195, 185, 0.25);
-        }
-
-        .scrapbook-photo:nth-child(3)::before {
-            transform: translateX(-50%) rotate(0.5deg);
-            width: 66px;
-            background: rgba(210, 185, 200, 0.5);
-            border-color: rgba(195, 170, 185, 0.25);
-        }
-
-        .scrapbook-photo:nth-child(4)::before {
-            transform: translateX(-50%) rotate(-1deg);
-            background: rgba(195, 215, 175, 0.5);
-            border-color: rgba(180, 200, 160, 0.25);
-        }
-
-        /* ===== CAPTIONS ===== */
-        .scrapbook-caption {
-            padding: 10px 4px 14px;
-            text-align: center;
-        }
-
-        .scrapbook-pub {
-            font-family: 'Parkinsans', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #999;
-            margin-bottom: 3px;
-        }
-
-        .scrapbook-title {
-            font-family: 'Parkinsans', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1.3;
-        }
-
-        /* ===== BACK LINK ===== */
-        .back-link-wrapper {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 0 3rem 4rem;
-        }
-
-        .back-link {
-            display: inline-block;
-            font-family: 'Parkinsans', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.6);
-            padding: 6px 14px;
-            border-radius: 4px;
-            transition: background 0.3s ease;
-        }
-
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 700px) {
-            .scrapbook {
-                grid-template-columns: 1fr;
-                max-width: 360px;
-                padding: 1rem 1.5rem 3rem;
-                gap: 2.5rem;
-            }
-
-            .page-header {
-                padding: 5rem 1rem 1.5rem;
-            }
-
-            .back-link-wrapper {
-                padding: 0 1.5rem 3rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ===== NAV ===== -->
-    <div class="sticky-wrapper">
-        <nav class="nav">
-            <a href="index.html" class="nav-logo">RNK</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="work.html" class="active">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="page-content">
-
-        <div class="page-header">
-            <h1> An Assorted Collection Of My Work In Print</h1>
-        </p>
-        </div>
-
-        <div class="scrapbook">
-
-            <!-- LEFT PAGE, TOP -->
-            <div class="scrapbook-photo">
-                <a href="https://www.huffpost.com/entry/small-town-gay-coming-out_n_64090adae4b06acd7c83fe42" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/huffpost-preview.png" alt="HuffPost article preview">
-                    <div class="scrapbook-caption">
-                        <div class="scrapbook-pub">HuffPost</div>
-                        <div class="scrapbook-title">Instead of choosing to perpetuate a family legacy of resentment, I chose to be the person I needed when I was younger. </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- RIGHT PAGE, TOP -->
-            <div class="scrapbook-photo">
-                <a href="https://www.thesunmagazine.org/articles/21624-cash" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/sun-magazine-preview.png" alt="The Sun Magazine article preview">
-                    <div class="scrapbook-caption">
-                        <div class="scrapbook-pub">The Sun Magazine</div>
-                        <div class="scrapbook-title">A chicken shit story I wrote for a national literary magazine. It's the second story from the top of the page.</div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- LEFT PAGE, BOTTOM -->
-            <div class="scrapbook-photo">
-                <!-- ⚠️ REPLACE # WITH CORRECT MUO URL -->
-                <a href="https://www.makeuseof.com/author/rian-kochel/" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/makeuseof-preview.png" alt="MakeUseOf article preview">
-                    <div class="scrapbook-caption">
-                        <div class="scrapbook-pub">MakeUseOf</div>
-                        <div class="scrapbook-title">Tech reviews, AI news, &amp; How-To's</div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- RIGHT PAGE, BOTTOM -->
-            <div class="scrapbook-photo">
-                <a href="https://thenerdstash.com/author/riankochel/" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/published/nerdstash-preview.png" alt="The Nerd Stash author page preview">
-                    <div class="scrapbook-caption">
-                        <div class="scrapbook-pub">The Nerd Stash</div>
-                        <div class="scrapbook-title">A grab bag of bylines covering human interest stories, political hot takes, &amp; click bait imitating culture.</div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-
-        <!-- BACK LINK -->
-        <div class="back-link-wrapper">
-            <a href="work.html" class="back-link">← Back to Work</a>
-        </div>
-
-    </main>
-
-    <script src="js/main.js"></script>
-</body>
-</html>
+            background
