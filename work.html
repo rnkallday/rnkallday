@@ -5,8 +5,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work | RNK</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ================================
+       WORK PAGE — PREMIUM OVERRIDES
+       ================================ */
+
+    /* --- Background atmosphere --- */
+    .work-showcase {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Cinematic vignette */
+    .work-showcase::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 25%, rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .work-showcase-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* --- Cursor glow --- */
+    .cursor-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125, 212, 252, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .cursor-glow.visible {
+      opacity: 1;
+    }
+
+    /* --- Card: kill old animations, set up entrance --- */
+    .work-showcase .work-card {
+      opacity: 0;
+      transform: translateY(60px) scale(0.97);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      animation: none;
+    }
+
+    .work-showcase .work-card:nth-child(1),
+    .work-showcase .work-card:nth-child(2),
+    .work-showcase .work-card:nth-child(3) {
+      animation: none;
+      animation-delay: 0s;
+    }
+
+    /* --- Entered: visible --- */
+    .work-showcase .work-card.entered {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* --- Override old hover transform --- */
+    .work-showcase .work-card:hover {
+      transform: translateY(0) scale(1);
+    }
+
+    /* --- Floating: organic multi-axis idle --- */
+    .work-showcase .work-card.floating {
+      transition: none;
+    }
+
+    .work-showcase .work-card.floating:nth-child(1) {
+      animation: pf1 6s ease-in-out infinite;
+    }
+    .work-showcase .work-card.floating:nth-child(2) {
+      animation: pf2 7.2s ease-in-out infinite;
+    }
+    .work-showcase .work-card.floating:nth-child(3) {
+      animation: pf3 5.6s ease-in-out infinite;
+    }
+
+    @keyframes pf1 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25%      { transform: translateY(-9px) rotate(0.5deg); }
+      50%      { transform: translateY(-3px) rotate(-0.3deg); }
+      75%      { transform: translateY(-12px) rotate(0.2deg); }
+    }
+
+    @keyframes pf2 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25%      { transform: translateY(-5px) rotate(-0.4deg); }
+      50%      { transform: translateY(-14px) rotate(0.5deg); }
+      75%      { transform: translateY(-2px) rotate(-0.2deg); }
+    }
+
+    @keyframes pf3 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25%      { transform: translateY(-11px) rotate(0.3deg); }
+      50%      { transform: translateY(-1px) rotate(-0.5deg); }
+      75%      { transform: translateY(-8px) rotate(0.4deg); }
+    }
+
+    /* --- Inner wrapper: 3D tilt target --- */
+    .work-card-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* --- Image shadows --- */
+    .work-showcase .work-card img {
+      transition: filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .work-showcase .work-card:hover img {
+      filter:
+        drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35))
+        drop-shadow(0 20px 40px rgba(125, 212, 252, 0.3))
+        drop-shadow(0 40px 80px rgba(134, 239, 172, 0.15))
+        brightness(1.1);
+    }
+
+    /* --- Hover labels --- */
+    .work-label {
+      display: block;
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--color-white);
+      opacity: 0;
+      transition: opacity 0.4s ease,
+                  transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      pointer-events: none;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+      white-space: nowrap;
+    }
+
+    .work-card:hover .work-label {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* --- Mobile adjustments --- */
+    @media (max-width: 600px) {
+      .cursor-glow {
+        display: none;
+      }
+
+      .work-label {
+        opacity: 0.9;
+        transform: translateX(-50%) translateY(0);
+        font-size: var(--text-xs);
+      }
+
+      .work-showcase::before {
+        background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
+      }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow"></div>
 
   <!-- Navigation -->
   <div class="sticky-wrapper">
@@ -26,15 +199,24 @@
     <div class="work-showcase-grid">
 
       <a href="published.html" class="work-card" aria-label="View Published Work">
-        <img src="assets/images/notebook.png" alt="Published Work - composition notebook">
+        <div class="work-card-inner">
+          <img src="assets/images/notebook.png" alt="Published Work - composition notebook">
+          <span class="work-label">Published</span>
+        </div>
       </a>
 
       <a href="audio.html" class="work-card" aria-label="View Audio Production">
-        <img src="assets/images/cassette.png" alt="Audio Production - cassette tape">
+        <div class="work-card-inner">
+          <img src="assets/images/cassette.png" alt="Audio Production - cassette tape">
+          <span class="work-label">Audio</span>
+        </div>
       </a>
 
       <a href="digital.html" class="work-card" aria-label="View Digital Work">
-        <img src="assets/images/monitor.png" alt="Digital - vintage Macintosh monitor">
+        <div class="work-card-inner">
+          <img src="assets/images/monitor.png" alt="Digital - vintage Macintosh monitor">
+          <span class="work-label">Digital</span>
+        </div>
       </a>
 
     </div>
@@ -47,5 +229,84 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.work-card');
+      const glow = document.querySelector('.cursor-glow');
+      const isTouch = window.matchMedia('(hover: none)').matches;
+
+      /* ================================
+         STAGGERED ENTRANCE
+         ================================ */
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.classList.add('entered');
+        }, 400 + i * 280);
+      });
+
+      /* ================================
+         TRANSITION TO FLOATING
+         Wait for all entrances + transitions to finish
+         ================================ */
+      const floatDelay = 400 + (cards.length - 1) * 280 + 1000;
+      setTimeout(() => {
+        cards.forEach(card => card.classList.add('floating'));
+      }, floatDelay);
+
+      /* ================================
+         CURSOR GLOW (desktop only)
+         ================================ */
+      if (!isTouch && glow) {
+        const showcase = document.querySelector('.work-showcase');
+
+        showcase.addEventListener('mouseenter', () => {
+          glow.classList.add('visible');
+        });
+
+        showcase.addEventListener('mouseleave', () => {
+          glow.classList.remove('visible');
+        });
+
+        showcase.addEventListener('mousemove', (e) => {
+          glow.style.left = e.clientX + 'px';
+          glow.style.top = e.clientY + 'px';
+        });
+      }
+
+      /* ================================
+         3D TILT (desktop only)
+         ================================ */
+      if (!isTouch) {
+        cards.forEach(card => {
+          const inner = card.querySelector('.work-card-inner');
+          if (!inner) return;
+
+          card.addEventListener('mouseenter', () => {
+            inner.style.transition = 'transform 0.1s ease-out';
+          });
+
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+
+            const rotY = ((x - cx) / cx) * 14;
+            const rotX = ((cy - y) / cy) * 14;
+
+            inner.style.transform =
+              'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale3d(1.06, 1.06, 1.06)';
+          });
+
+          card.addEventListener('mouseleave', () => {
+            inner.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            inner.style.transform =
+              'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
