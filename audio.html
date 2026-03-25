@@ -1,44 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio Production | RNK</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Production — RNK</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        /* ========================
+           AUDIO — TAPE DECK
+        ======================== */
+
+        body {
+            background-color: #1a1410;
+            background-image:
+                linear-gradient(rgba(15, 12, 8, 0.75), rgba(15, 12, 8, 0.88)),
+                url('assets/images/audio/audio-bg.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        /* Override default page-content for full-width dark layout */
+        .page-content {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            text-align: center;
+            padding: 6rem 1.5rem 1.5rem;
+            border-bottom: none;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: #F5E6D0;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .page-header p {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #A89580;
+        }
+
+        /* ===== VU METER DECORATION ===== */
+        .vu-meter {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 3px;
+            margin: 1.5rem auto 0;
+            height: 24px;
+        }
+
+        .vu-bar {
+            width: 4px;
+            border-radius: 2px;
+        }
+
+        .vu-bar:nth-child(1)  { height: 8px;  background: #E8A952; animation: vu-bounce 1.2s ease-in-out 0s infinite; }
+        .vu-bar:nth-child(2)  { height: 14px; background: #E8A952; animation: vu-bounce 0.9s ease-in-out 0.1s infinite; }
+        .vu-bar:nth-child(3)  { height: 20px; background: #E8A952; animation: vu-bounce 1.1s ease-in-out 0.05s infinite; }
+        .vu-bar:nth-child(4)  { height: 16px; background: #E8A952; animation: vu-bounce 1.3s ease-in-out 0.15s infinite; }
+        .vu-bar:nth-child(5)  { height: 24px; background: #D4813A; animation: vu-bounce 0.8s ease-in-out 0.08s infinite; }
+        .vu-bar:nth-child(6)  { height: 18px; background: #D4813A; animation: vu-bounce 1.0s ease-in-out 0.12s infinite; }
+        .vu-bar:nth-child(7)  { height: 12px; background: #E8A952; animation: vu-bounce 1.4s ease-in-out 0.02s infinite; }
+        .vu-bar:nth-child(8)  { height: 22px; background: #D4813A; animation: vu-bounce 0.95s ease-in-out 0.18s infinite; }
+        .vu-bar:nth-child(9)  { height: 10px; background: #E8A952; animation: vu-bounce 1.15s ease-in-out 0.07s infinite; }
+        .vu-bar:nth-child(10) { height: 16px; background: #E8A952; animation: vu-bounce 1.05s ease-in-out 0.13s infinite; }
+
+        @keyframes vu-bounce {
+            0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+            50%      { transform: scaleY(1);   opacity: 1; }
+        }
+
+        /* ===== TAPE DECK PANELS ===== */
+        .tape-deck {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 2rem 1rem;
+        }
+
+        .deck-panel {
+            background: linear-gradient(180deg, #1E1A15 0%, #161210 100%);
+            border: 1px solid rgba(200, 170, 120, 0.12);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.4),
+                0 12px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .deck-panel:hover {
+            border-color: rgba(200, 170, 120, 0.25);
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.4),
+                0 16px 40px rgba(0, 0, 0, 0.35),
+                0 0 50px rgba(232, 169, 82, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        /* Deck label strip */
+        .deck-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(200, 170, 120, 0.08);
+        }
+
+        .deck-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px currentColor;
+            animation: indicator-pulse 3s ease-in-out 0s infinite;
+        }
+
+        .deck-indicator--green {
+            color: #1DB954;
+            background: #1DB954;
+        }
+
+        .deck-indicator--orange {
+            color: #FF5500;
+            background: #FF5500;
+        }
+
+        @keyframes indicator-pulse {
+            0%, 100% { opacity: 0.5; }
+            50%      { opacity: 1; }
+        }
+
+        .deck-title {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #A89580;
+        }
+
+        /* Embed wrapper */
+        .deck-embed {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .deck-embed iframe {
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* ===== PROFILE LINK BUTTONS ===== */
+        .profile-links {
+            max-width: 720px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .profile-link {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1rem 1.5rem;
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .profile-link svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+
+        /* Spotify button */
+        .profile-link--spotify {
+            background: rgba(30, 215, 96, 0.08);
+            border: 1px solid rgba(30, 215, 96, 0.25);
+            color: #1DB954;
+        }
+
+        .profile-link--spotify:hover {
+            background: rgba(30, 215, 96, 0.16);
+            border-color: rgba(30, 215, 96, 0.45);
+            color: #1DB954;
+            box-shadow: 0 0 30px rgba(30, 215, 96, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* SoundCloud button */
+        .profile-link--soundcloud {
+            background: rgba(255, 85, 0, 0.08);
+            border: 1px solid rgba(255, 85, 0, 0.25);
+            color: #FF5500;
+        }
+
+        .profile-link--soundcloud:hover {
+            background: rgba(255, 85, 0, 0.16);
+            border-color: rgba(255, 85, 0, 0.45);
+            color: #FF5500;
+            box-shadow: 0 0 30px rgba(255, 85, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link-wrapper {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #A89580;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(200, 170, 120, 0.12);
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #F5E6D0;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(200, 170, 120, 0.25);
+        }
+
+        /* ===== TAPE REEL DIVIDER ===== */
+        .tape-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 720px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .tape-divider::before,
+        .tape-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200, 170, 120, 0.15), transparent);
+        }
+
+        .tape-divider-icon {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: rgba(200, 170, 120, 0.2);
+            font-family: 'Parkinsans', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .page-header {
+                padding: 5rem 1rem 1.5rem;
+            }
+
+            .tape-deck,
+            .profile-links,
+            .back-link-wrapper,
+            .tape-divider {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .profile-links {
+                flex-direction: column;
+            }
+
+            .deck-panel {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                letter-spacing: 0.02em;
+            }
+
+            .tape-deck,
+            .profile-links,
+            .back-link-wrapper,
+            .tape-divider {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .deck-panel {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <div class="sticky-wrapper">
-    <nav class="nav">
-      <a href="index.html" class="nav-logo">RNK</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="work.html" class="active">Work</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <!-- Page Content -->
-  <main class="page-content">
-    <header class="page-header">
-      <h1 class="page-title">Audio Production</h1>
-      <p class="lead">Music, beats, and sonic experiments.</p>
-    </header>
-
-    <div class="sub-page-grid">
-      <p style="color: var(--color-gray); font-style: italic;">Content coming soon.</p>
+    <!-- ===== NAV ===== -->
+    <div class="sticky-wrapper">
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">RNK</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html" class="active">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-gradient"></div>
-    <p>&copy; 2025 RNK. All rights reserved.</p>
-  </footer>
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="page-content">
 
-  <script src="js/main.js"></script>
+        <div class="page-header">
+            <h1>Audio Production</h1>
+            <p>Original music, remixes, and sound design</p>
+            <div class="vu-meter">
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+            </div>
+        </div>
+
+        <!-- SPOTIFY EMBED -->
+        <div class="tape-deck">
+            <div class="deck-panel">
+                <div class="deck-label">
+                    <div class="deck-indicator deck-indicator--green"></div>
+                    <div class="deck-title">Spotify — Now Playing</div>
+                </div>
+                <div class="deck-embed">
+                    <iframe
+                        style="border-radius:12px"
+                        src="https://open.spotify.com/embed/track/2k1TeUbHb14JCDPqwQJ5sv?utm_source=generator&amp;theme=0"
+                        width="100%"
+                        height="152"
+                        frameBorder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOUNDCLOUD EMBED -->
+        <div class="tape-deck">
+            <div class="deck-panel">
+                <div class="deck-label">
+                    <div class="deck-indicator deck-indicator--orange"></div>
+                    <div class="deck-title">SoundCloud — Now Playing</div>
+                </div>
+                <div class="deck-embed">
+                    <iframe
+                        width="100%"
+                        height="166"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Frian-kochel-280647786%2Fdavid-bowie-found-a-sound&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="tape-divider">
+            <span class="tape-divider-icon">&#9670; &#9670; &#9670;</span>
+        </div>
+
+        <!-- PROFILE LINKS -->
+        <div class="profile-links">
+            <a href="https://open.spotify.com/artist/1kG5WKLiiKHwMBkzqiFybL?si=TPYV1yr8S9yJOP3qtv4ehw" target="_blank" rel="noopener noreferrer" class="profile-link profile-link--spotify">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                </svg>
+                Spotify Artist Page
+            </a>
+            <a href="https://soundcloud.com/rian-kochel-280647786" target="_blank" rel="noopener noreferrer" class="profile-link profile-link--soundcloud">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.057-.05-.1-.1-.1m-.899.828c-.06 0-.091.037-.104.094L0 14.479l.172 1.308c.013.06.045.094.104.094.058 0 .09-.038.104-.094l.21-1.308-.21-1.334c-.014-.057-.046-.09-.104-.09m1.848-1.138c-.064 0-.112.05-.119.109l-.217 2.555.217 2.457c.007.065.055.109.119.109.064 0 .112-.044.12-.109l.248-2.457-.248-2.555c-.008-.059-.056-.109-.12-.109m.947-.195c-.074 0-.128.057-.135.121L2.7 14.479l.236 2.4c.007.069.061.121.135.121.074 0 .127-.052.136-.121l.27-2.4-.27-2.758c-.009-.064-.062-.121-.136-.121m.986-.15c-.083 0-.142.063-.15.135l-.233 2.908.233 2.358c.008.075.067.135.15.135s.143-.06.15-.135l.27-2.358-.27-2.908c-.007-.072-.067-.135-.15-.135m1.035-.4c-.094 0-.158.07-.164.149l-.217 3.308.217 2.3c.006.08.07.15.164.15.091 0 .157-.07.163-.15l.248-2.3-.248-3.308c-.006-.079-.072-.149-.163-.149m1.048-.48c-.104 0-.175.076-.18.162l-.21 3.788.21 2.248c.005.09.076.162.18.162.102 0 .174-.072.18-.162l.24-2.248-.24-3.788c-.006-.086-.078-.162-.18-.162m1.072-.282c-.115 0-.19.083-.195.176l-.203 4.07.203 2.187c.005.096.08.176.195.176.114 0 .189-.08.196-.176l.233-2.187-.233-4.07c-.007-.093-.082-.176-.196-.176m1.083-.136c-.124 0-.204.09-.21.19l-.196 4.206.196 2.137c.006.104.086.19.21.19.123 0 .204-.086.21-.19l.224-2.137-.224-4.206c-.006-.1-.087-.19-.21-.19m1.095-.058c-.135 0-.218.098-.223.203l-.188 4.264.188 2.09c.005.11.088.203.223.203.134 0 .217-.093.224-.203l.21-2.09-.21-4.264c-.007-.105-.09-.203-.224-.203m1.174.326c-.007-.117-.098-.214-.232-.214-.136 0-.226.097-.232.214l-.18 3.938.18 2.04c.006.117.096.214.232.214.134 0 .225-.097.232-.214l.204-2.04-.204-3.938m.706-1.168c-.145 0-.24.104-.246.228l-.173 5.106.173 1.99c.006.121.101.228.246.228.144 0 .24-.107.246-.228l.197-1.99-.197-5.106c-.006-.124-.102-.228-.246-.228m1.156-.085c-.155 0-.254.112-.259.24l-.166 5.191.166 1.943c.005.128.104.24.259.24.153 0 .253-.112.258-.24l.19-1.943-.19-5.191c-.005-.128-.105-.24-.258-.24m1.11.674c-.005-.135-.113-.252-.27-.252-.156 0-.263.117-.27.252l-.158 4.517.159 1.895c.007.135.113.252.27.252.155 0 .262-.117.27-.252l.18-1.895-.18-4.517m.596-1.905c-.168 0-.279.124-.284.266l-.152 6.156.152 1.847c.005.14.116.266.284.266.166 0 .279-.126.284-.266l.173-1.847-.173-6.156c-.005-.142-.118-.266-.284-.266m1.193-.376c-.178 0-.293.132-.298.28l-.144 6.532.144 1.8c.005.148.12.28.298.28.176 0 .293-.132.298-.28l.165-1.8-.165-6.532c-.005-.148-.122-.28-.298-.28m1.093.683c-.005-.155-.128-.291-.307-.291-.18 0-.302.136-.307.291l-.138 5.849.138 1.753c.005.155.127.291.307.291.178 0 .302-.136.307-.291l.157-1.753-.157-5.849m1.222-1.498c-.186 0-.312.14-.318.302l-.13 7.347.13 1.707c.006.163.132.302.318.302.184 0 .312-.14.318-.302l.15-1.707-.15-7.347c-.006-.162-.134-.302-.318-.302m1.168.757c-.006-.168-.14-.312-.327-.312-.188 0-.322.144-.327.312l-.124 6.59.124 1.66c.005.168.14.312.327.312.186 0 .321-.144.327-.312l.14-1.66-.14-6.59m1.294-1.99c-.006-.175-.146-.323-.338-.323-.193 0-.332.148-.338.323L19.6 14.479l.118 1.613c.006.175.145.323.338.323.19 0 .331-.148.337-.323l.135-1.613-.135-7.814m.674.625c-.005-.18-.152-.334-.348-.334-.196 0-.343.154-.348.334l-.112 7.189.112 1.567c.005.18.152.334.348.334.195 0 .343-.154.348-.334l.128-1.567-.128-7.189m1.174-1.207c-.35 0-.643.294-.643.643V16.1c0 .35.293.643.643.643h2.014c2.3 0 4.163-1.862 4.163-4.163 0-2.3-1.863-4.162-4.163-4.162"/>
+                </svg>
+                SoundCloud Profile
+            </a>
+        </div>
+
+        <!-- BACK LINK -->
+        <div class="back-link-wrapper">
+            <a href="work.html" class="back-link">&larr; Back to Work</a>
+        </div>
+
+    </main>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
