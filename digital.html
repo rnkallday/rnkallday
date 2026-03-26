@@ -1,44 +1,685 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital | RNK</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital — RNK</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        /* ========================
+           DIGITAL — CRT MONITOR
+        ======================== */
+
+        body {
+            background-color: #08090e;
+            background-image:
+                linear-gradient(rgba(6, 8, 14, 0.80), rgba(6, 8, 14, 0.92)),
+                url('assets/images/digital/digital-bg.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        /* === GLOBAL SCANLINE OVERLAY === */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.06) 2px,
+                rgba(0, 0, 0, 0.06) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Override default page-content for full-width dark layout */
+        .page-content {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            text-align: center;
+            padding: 6rem 1.5rem 1.5rem;
+            border-bottom: none;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: #7DD4FC;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-shadow:
+                0 0 10px rgba(125, 212, 252, 0.5),
+                0 0 40px rgba(125, 212, 252, 0.15),
+                3px 3px 0 rgba(255, 50, 80, 0.12),
+                -3px -3px 0 rgba(80, 50, 255, 0.12);
+            animation: crt-flicker 5s ease-in-out infinite;
+        }
+
+        @keyframes crt-flicker {
+            0%, 100% { opacity: 1; }
+            91% { opacity: 1; }
+            92% { opacity: 0.82; }
+            93% { opacity: 1; }
+            95% { opacity: 0.9; }
+            96% { opacity: 1; }
+        }
+
+        .page-header p {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #5e7f96;
+        }
+
+        /* === SIGNAL BAR (header decoration) === */
+        .signal-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 1.5rem auto 0;
+            height: 20px;
+        }
+
+        .signal-block {
+            width: 6px;
+            height: 6px;
+            border-radius: 1px;
+            background: #7DD4FC;
+            opacity: 0.25;
+            animation: signal-pulse 2.2s ease-in-out infinite;
+        }
+
+        .signal-block:nth-child(1)  { animation-delay: 0s; }
+        .signal-block:nth-child(2)  { animation-delay: 0.18s; }
+        .signal-block:nth-child(3)  { animation-delay: 0.36s; }
+        .signal-block:nth-child(4)  { animation-delay: 0.54s; }
+        .signal-block:nth-child(5)  { animation-delay: 0.72s; }
+        .signal-block:nth-child(6)  { animation-delay: 0.90s; }
+        .signal-block:nth-child(7)  { animation-delay: 1.08s; }
+        .signal-block:nth-child(8)  { animation-delay: 1.26s; }
+
+        @keyframes signal-pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== MONITOR FRAME (shared component) ===== */
+        .monitor-frame {
+            background: linear-gradient(180deg, #0e1118 0%, #0a0c12 100%);
+            border: 1px solid rgba(125, 212, 252, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.5),
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(125, 212, 252, 0.04);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .monitor-frame:hover {
+            border-color: rgba(125, 212, 252, 0.22);
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.5),
+                0 20px 50px rgba(0, 0, 0, 0.45),
+                0 0 60px rgba(125, 212, 252, 0.06),
+                inset 0 1px 0 rgba(125, 212, 252, 0.04);
+        }
+
+        /* Bezel bar (top of monitor) */
+        .monitor-bezel {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.7rem 1.25rem;
+            border-bottom: 1px solid rgba(125, 212, 252, 0.05);
+            background: rgba(125, 212, 252, 0.015);
+        }
+
+        .bezel-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .bezel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(125, 212, 252, 0.12);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .monitor-frame:hover .bezel-dot:nth-child(1) {
+            background: #FF5F57;
+            box-shadow: 0 0 6px rgba(255, 95, 87, 0.5);
+        }
+        .monitor-frame:hover .bezel-dot:nth-child(2) {
+            background: #FFBD2E;
+            box-shadow: 0 0 6px rgba(255, 189, 46, 0.5);
+        }
+        .monitor-frame:hover .bezel-dot:nth-child(3) {
+            background: #28CA41;
+            box-shadow: 0 0 6px rgba(40, 202, 65, 0.5);
+        }
+
+        .bezel-title {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #5e7f96;
+        }
+
+        .monitor-screen {
+            padding: 1.25rem;
+        }
+
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .video-section .monitor-frame {
+            margin-bottom: 2rem;
+        }
+
+        /* 16:9 responsive video wrapper */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ===== INSTAGRAM CARD ===== */
+        .ig-card {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .ig-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at center, rgba(125, 212, 252, 0.03) 0%, transparent 70%);
+            position: relative;
+            transition: background 0.4s ease;
+        }
+
+        .ig-card:hover .ig-screen {
+            background:
+                radial-gradient(ellipse at center, rgba(125, 212, 252, 0.07) 0%, transparent 70%);
+        }
+
+        /* Subtle noise texture */
+        .ig-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+            animation: static-shift 0.8s steps(4) infinite;
+        }
+
+        @keyframes static-shift {
+            0%   { transform: translate(0, 0); }
+            25%  { transform: translate(-1px, 1px); }
+            50%  { transform: translate(1px, -1px); }
+            75%  { transform: translate(-1px, -1px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .ig-play-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid rgba(125, 212, 252, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            z-index: 1;
+        }
+
+        .ig-play-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: #7DD4FC;
+            margin-left: 3px;
+            transition: fill 0.3s ease;
+        }
+
+        .ig-card:hover .ig-play-btn {
+            border-color: rgba(125, 212, 252, 0.7);
+            box-shadow: 0 0 25px rgba(125, 212, 252, 0.25);
+            transform: scale(1.1);
+        }
+
+        .ig-title {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #c0d6e4;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ig-subtitle {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #5e7f96;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .ig-card:hover .ig-subtitle {
+            color: #7DD4FC;
+        }
+
+        /* ===== SECTION LABELS ===== */
+        .section-label {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .section-label span {
+            display: inline-block;
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(125, 212, 252, 0.3);
+            border: 1px solid rgba(125, 212, 252, 0.1);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        /* ===== CRT DIVIDER ===== */
+        .crt-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 1rem auto 2.5rem;
+            padding: 0 2rem;
+        }
+
+        .crt-divider::before,
+        .crt-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(125, 212, 252, 0.1), transparent);
+        }
+
+        .crt-divider-icon {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: rgba(125, 212, 252, 0.18);
+            font-family: monospace;
+            font-weight: 700;
+        }
+
+        /* ===== WEB PROJECTS SECTION ===== */
+        .web-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .web-section .section-label {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .web-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* === Web Project Cards === */
+        .web-card {
+            display: block;
+            text-decoration: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition:
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+        .web-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .web-card .monitor-screen {
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .web-card .screen-img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            filter: brightness(0.65) saturate(0.6);
+            transition: filter 0.5s ease;
+        }
+
+        /* Per-card scanlines on the screenshot */
+        .web-card .monitor-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.12) 2px,
+                rgba(0, 0, 0, 0.12) 4px
+            );
+            pointer-events: none;
+            opacity: 0.8;
+            transition: opacity 0.5s ease;
+        }
+
+        .web-card:hover .screen-img {
+            filter: brightness(1) saturate(1);
+        }
+
+        .web-card:hover .monitor-screen::after {
+            opacity: 0.25;
+        }
+
+        /* Card info bar below screenshot */
+        .web-card-info {
+            padding: 0.9rem 1.15rem;
+            background: rgba(125, 212, 252, 0.02);
+            border-top: 1px solid rgba(125, 212, 252, 0.05);
+        }
+
+        .web-card-title {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #c0d6e4;
+            margin-bottom: 0.15rem;
+            transition: color 0.3s ease;
+        }
+
+        .web-card:hover .web-card-title {
+            color: #7DD4FC;
+        }
+
+        .web-card-org {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: #5e7f96;
+        }
+
+        /* ===== PROFILE LINK ===== */
+        .profile-links {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .profile-link {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1rem 1.5rem;
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .profile-link svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+
+        .profile-link--youtube {
+            background: rgba(255, 0, 0, 0.06);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            color: #FF0000;
+        }
+
+        .profile-link--youtube:hover {
+            background: rgba(255, 0, 0, 0.14);
+            border-color: rgba(255, 0, 0, 0.4);
+            color: #FF0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #5e7f96;
+            text-decoration: none;
+            background: rgba(125, 212, 252, 0.03);
+            border: 1px solid rgba(125, 212, 252, 0.08);
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #c0d6e4;
+            background: rgba(125, 212, 252, 0.08);
+            border-color: rgba(125, 212, 252, 0.2);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .web-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .page-header {
+                padding: 5rem 1rem 1.5rem;
+            }
+
+            .video-section,
+            .profile-links,
+            .back-link-wrapper,
+            .crt-divider,
+            .section-label {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .web-section {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .profile-links {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .web-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ig-screen {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                letter-spacing: 0.02em;
+            }
+
+            .video-section,
+            .profile-links,
+            .back-link-wrapper,
+            .crt-divider,
+            .section-label,
+            .web-section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .monitor-screen {
+                padding: 1rem;
+            }
+
+            .monitor-bezel {
+                padding: 0.6rem 1rem;
+            }
+
+            .web-grid {
+                gap: 1.25rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <div class="sticky-wrapper">
-    <nav class="nav">
-      <a href="index.html" class="nav-logo">RNK</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="work.html" class="active">Work</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <!-- Page Content -->
-  <main class="page-content">
-    <header class="page-header">
-      <h1 class="page-title">Digital</h1>
-      <p class="lead">Websites, video, and digital projects.</p>
-    </header>
-
-    <div class="sub-page-grid">
-      <p style="color: var(--color-gray); font-style: italic;">Content coming soon.</p>
+    <!-- ===== NAV ===== -->
+    <div class="sticky-wrapper">
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">RNK</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="work.html" class="active">Work</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-gradient"></div>
-    <p>&copy; 2025 RNK. All rights reserved.</p>
-  </footer>
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="page-content">
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+        <div class="page-header">
+            <h1>Digital</h1>
+            <p>Video production, web design &amp; digital content</p>
+            <div class="signal-bar">
+                <div class="signal-block"></div>
+                <div class="signal-block"></div>
+                <div class="signal-block"></div>
+                <div class="signal-block"></div>
+                <div class="signal-block"></div>
+                <div class="signal-block"></div>
+                <div class="signal-block"></div>
+                <div class="signal-block"></div>
+            </div>
+        </div>
+
+        <!-- ===== VIDEO PRODUCTION ===== -->
+        <div class="section-label"><span>Video</span></div>
+
+        <div class="video-section">
+
+            <!-- YouTube: outtaluv -->
+            <div class="monitor-frame">
+                <div class="monitor-bezel">
+                    <div class="bezel-dots">
+                        <div class="bezel-dot"></div>
+                        <div class="bezel-dot"></div>
+                        <div class="bezel-dot"></div>
+                    </div>
+                    <div class="bezel-title">outtaluv &mdash; Music Video</div>
+                </div>
+                <div class="monitor-screen">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/8jYSjGJuXHk"
+                            title="outtaluv — Music Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram: Finish what you started -->
