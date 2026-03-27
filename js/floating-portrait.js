@@ -1,7 +1,7 @@
 /* ================================
-   HAUNTING PORTRAIT
-   Autonomous deep sighs
-   ================================ */
+  HAUNTING PORTRAIT
+  Autonomous deep sighs
+  ================================ */
 
 (function() {
   const portrait = document.querySelector('.haunting-portrait');
@@ -10,13 +10,13 @@
   // === CONFIGURATION ===
   const config = {
     // Opacity range
-    minOpacity: 0.025,
-    maxOpacity: 0.09,
-    
+    minOpacity: 0.1,
+    maxOpacity: 0.32,
+   
     // Size range (percentage of viewport)
     minSize: 20,
     maxSize: 80,
-    
+   
     // Breathing rhythm (milliseconds)
     minVisibleTime: 8000,     // 8 seconds minimum visible
     maxVisibleTime: 18000,    // 18 seconds maximum visible
@@ -70,39 +70,39 @@
     const position = getRandomPosition();
     const size = random(config.minSize, config.maxSize);
     const opacity = random(config.minOpacity, config.maxOpacity);
-    
-    // Larger appearances are more ghostly
-    const adjustedOpacity = size > 50 ? opacity * 0.5 : opacity;
-    
+   
+    // Larger appearances are more ghostly (but still present)
+    const adjustedOpacity = size > 50 ? opacity * 0.65 : opacity;
+   
     // Clear and apply new position
     clearPosition();
     Object.keys(position).forEach(key => {
       portrait.style[key] = position[key];
     });
-    
+   
     // Apply size
     portrait.style.width = size + 'vw';
     portrait.style.height = 'auto';
-    
+   
     // Set opacity
     portrait.style.setProperty('--haunt-opacity', adjustedOpacity);
-    
+   
     // Inhale (fade in)
     requestAnimationFrame(() => {
       portrait.classList.add('is-visible');
     });
-    
+   
     // Hold breath, then exhale
     const visibleDuration = random(config.minVisibleTime, config.maxVisibleTime);
-    
+   
     setTimeout(() => {
       // Exhale (fade out)
       portrait.classList.remove('is-visible');
-      
+     
       // Rest, then breathe again
       const restDuration = random(config.minRestTime, config.maxRestTime);
       setTimeout(breathe, restDuration);
-      
+     
     }, visibleDuration);
   };
 
