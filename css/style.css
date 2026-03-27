@@ -1,13 +1,13 @@
 /* ================================
-   WORD NERD PORTFOLIO
-   Main Stylesheet
-   ================================ */
+  WORD NERD PORTFOLIO
+  Main Stylesheet
+  ================================ */
 
 @import url('variables.css');
 
 /* ================================
-   RESET & BASE
-   ================================ */
+  RESET & BASE
+  ================================ */
 
 *,
 *::before,
@@ -52,8 +52,8 @@ a:hover {
 }
 
 /* ================================
-   NAVIGATION
-   ================================ */
+  NAVIGATION
+  ================================ */
 
 .sticky-wrapper {
   height: 60px;
@@ -145,8 +145,8 @@ body:not(.home) .nav {
 }
 
 /* ================================
-   HERO SECTION (Home Page)
-   ================================ */
+  HERO SECTION (Home Page)
+  ================================ */
 
 header#home {
   height: calc(100vh - 60px);
@@ -252,8 +252,8 @@ header#home {
 }
 
 /* ================================
-   PAGE CONTENT (Interior Pages)
-   ================================ */
+  PAGE CONTENT (Interior Pages)
+  ================================ */
 
 .page-content {
   flex: 1;
@@ -295,8 +295,8 @@ header#home {
 }
 
 /* ================================
-   ABOUT PAGE
-   ================================ */
+  ABOUT PAGE
+  ================================ */
 
 .about-section {
   margin-bottom: var(--space-xl);
@@ -344,15 +344,15 @@ header#home {
 }
 
 /* ================================
-   HAUNTING PORTRAIT (About Page)
-   ================================ */
+  HAUNTING PORTRAIT (About Page)
+  ================================ */
 
 .haunting-portrait {
   position: fixed;
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transition: opacity 6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 4.5s ease-out;
   will-change: opacity;
 }
 
@@ -360,16 +360,17 @@ header#home {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: grayscale(100%) contrast(1.05);
+  filter: grayscale(100%) contrast(1.4) brightness(1.1);
 }
 
 .haunting-portrait.is-visible {
-  opacity: var(--haunt-opacity, 0.05);
+  opacity: var(--haunt-opacity, 0.2);
+  transition: opacity 2.5s ease-in;
 }
 
 /* ================================
-   CONTACT PAGE
-   ================================ */
+  CONTACT PAGE
+  ================================ */
 
 .contact-section {
   max-width: 600px;
@@ -463,8 +464,8 @@ header#home {
 }
 
 /* ================================
-   WORK PAGE - SHOWCASE
-   ================================ */
+  WORK PAGE - SHOWCASE
+  ================================ */
 
 /* --- Float animation for work cards --- */
 @keyframes gentle-float {
@@ -546,8 +547,8 @@ header#home {
 }
 
 /* ================================
-   SUB-PAGE GRID (Published, Audio, Digital)
-   ================================ */
+  SUB-PAGE GRID (Published, Audio, Digital)
+  ================================ */
 
 .sub-page-grid {
   display: grid;
@@ -556,8 +557,8 @@ header#home {
 }
 
 /* ================================
-   FOOTER
-   ================================ */
+  FOOTER
+  ================================ */
 
 .footer {
   padding: var(--space-md) var(--space-lg);
@@ -579,8 +580,8 @@ header#home {
 }
 
 /* ================================
-   RESPONSIVE DESIGN
-   ================================ */
+  RESPONSIVE DESIGN
+  ================================ */
 
 /* === TABLET (901px - 768px) === */
 @media (max-width: 900px) {
