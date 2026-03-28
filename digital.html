@@ -205,7 +205,7 @@
             margin-bottom: 2rem;
         }
 
-        /* 16:9 responsive video wrapper */
+        /* 16:9 responsive video wrapper (for iframes) */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
@@ -221,6 +221,14 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        /* Local video element (native <video>) */
+        .monitor-screen video {
+            width: 100%;
+            display: block;
+            border-radius: 6px;
+            background: #000;
         }
 
         /* ===== SECTION LABELS ===== */
@@ -559,177 +567,4 @@
                     <div class="bezel-dots">
                         <div class="bezel-dot"></div>
                         <div class="bezel-dot"></div>
-                        <div class="bezel-dot"></div>
-                    </div>
-                    <div class="bezel-title">outtaluv &mdash; Music Video</div>
-                </div>
-                <div class="monitor-screen">
-                    <div class="video-wrapper">
-                        <iframe
-                            src="https://www.youtube.com/embed/8jYSjGJuXHk"
-                            title="outtaluv — Music Video"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- DIVIDER -->
-        <div class="crt-divider">
-            <span class="crt-divider-icon">/// &nbsp; ///</span>
-        </div>
-
-        <!-- ===== WEB PROJECTS ===== -->
-        <div class="web-section">
-
-            <div class="section-label"><span>Web</span></div>
-
-            <div class="web-grid">
-
-                <!-- Kusama -->
-                <a href="https://kusama.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="monitor-frame web-card">
-                    <div class="monitor-bezel">
-                        <div class="bezel-dots">
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                        </div>
-                        <div class="bezel-title">Kusama</div>
-                    </div>
-                    <div class="monitor-screen">
-                        <img class="screen-img" src="assets/work/kusama-preview.png" alt="Kusama exhibition microsite">
-                    </div>
-                    <div class="web-card-info">
-                        <div class="web-card-title">Kusama: Infinity Mirrors</div>
-                        <div class="web-card-org">Seattle Art Museum</div>
-                    </div>
-                </a>
-
-                <!-- YSL -->
-                <a href="https://ysl.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="monitor-frame web-card">
-                    <div class="monitor-bezel">
-                        <div class="bezel-dots">
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                        </div>
-                        <div class="bezel-title">YSL</div>
-                    </div>
-                    <div class="monitor-screen">
-                        <img class="screen-img" src="assets/work/ysl-preview.png" alt="Yves Saint Laurent exhibition microsite">
-                    </div>
-                    <div class="web-card-info">
-                        <div class="web-card-title">Yves Saint Laurent</div>
-                        <div class="web-card-org">Seattle Art Museum</div>
-                    </div>
-                </a>
-
-                <!-- Wyeth -->
-                <a href="https://wyeth.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="monitor-frame web-card">
-                    <div class="monitor-bezel">
-                        <div class="bezel-dots">
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                        </div>
-                        <div class="bezel-title">Wyeth</div>
-                    </div>
-                    <div class="monitor-screen">
-                        <img class="screen-img" src="assets/work/wyeth-preview.png" alt="Andrew Wyeth exhibition microsite">
-                    </div>
-                    <div class="web-card-info">
-                        <div class="web-card-title">Andrew Wyeth</div>
-                        <div class="web-card-org">Seattle Art Museum</div>
-                    </div>
-                </a>
-
-                <!-- SAM Inspire -->
-                <a href="https://web.archive.org/web/20250907115838/https://inspire.site.seattleartmuseum.org/" target="_blank" rel="noopener noreferrer" class="monitor-frame web-card">
-                    <div class="monitor-bezel">
-                        <div class="bezel-dots">
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                        </div>
-                        <div class="bezel-title">Inspire</div>
-                    </div>
-                    <div class="monitor-screen">
-                        <img class="screen-img" src="assets/work/sam-inspire-preview.png" alt="SAM Inspire microsite">
-                    </div>
-                    <div class="web-card-info">
-                        <div class="web-card-title">SAM Inspire</div>
-                        <div class="web-card-org">Seattle Art Museum</div>
-                    </div>
-                </a>
-
-                <!-- MOHAI -->
-                <a href="https://mohai.org/" target="_blank" rel="noopener noreferrer" class="monitor-frame web-card">
-                    <div class="monitor-bezel">
-                        <div class="bezel-dots">
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                        </div>
-                        <div class="bezel-title">MOHAI</div>
-                    </div>
-                    <div class="monitor-screen">
-                        <img class="screen-img" src="assets/work/mohai-preview.png" alt="MOHAI website">
-                    </div>
-                    <div class="web-card-info">
-                        <div class="web-card-title">MOHAI</div>
-                        <div class="web-card-org">Museum of History &amp; Industry</div>
-                    </div>
-                </a>
-
-                <!-- Revealing Queer -->
-                <a href="https://mohai.org/exhibits/revealing-queer/" target="_blank" rel="noopener noreferrer" class="monitor-frame web-card">
-                    <div class="monitor-bezel">
-                        <div class="bezel-dots">
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                        </div>
-                        <div class="bezel-title">Exhibit</div>
-                    </div>
-                    <div class="monitor-screen">
-                        <img class="screen-img" src="assets/work/revealing-queer-preview.png" alt="Revealing Queer exhibit page">
-                    </div>
-                    <div class="web-card-info">
-                        <div class="web-card-title">Revealing Queer</div>
-                        <div class="web-card-org">MOHAI</div>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-
-        <!-- DIVIDER -->
-        <div class="crt-divider">
-            <span class="crt-divider-icon">/// &nbsp; ///</span>
-        </div>
-
-        <!-- ===== PROFILE LINK ===== -->
-        <div class="profile-links">
-            <a href="https://www.youtube.com/@therealbiffpowbang" target="_blank" rel="noopener noreferrer" class="profile-link profile-link--youtube">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                YouTube
-            </a>
-        </div>
-
-        <!-- BACK LINK -->
-        <div class="back-link-wrapper">
-            <a href="work.html" class="back-link">&larr; Back to Work</a>
-        </div>
-
-    </main>
-
-    <script src="js/main.js"></script>
-</body>
-</html>
+                
