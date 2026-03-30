@@ -235,11 +235,11 @@ header#home {
   align-items: center;
   gap: var(--space-xs);
   font-family: var(--font-primary);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: var(--font-weight-bold);
   color: var(--color-black);
   background: var(--gradient-brand);
-  padding: var(--space-sm) var(--space-md);
+  padding: 10px 20px;
   border-radius: var(--border-radius-md);
   transition: all var(--transition-base);
   box-shadow: var(--shadow-color);
