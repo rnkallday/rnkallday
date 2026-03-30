@@ -4,7 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | RNKALLDAY</title>
-  <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Dark Room atmosphere (matches about.html) --- */
+    body {
+      background: #0F0F0F;
+      color: var(--color-white);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 15%, rgba(125, 212, 252, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 10% 85%, rgba(134, 239, 172, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sticky-wrapper { position: relative; z-index: 1000; }
+    .page-content { position: relative; z-index: 1; }
+    .footer { position: relative; z-index: 1; background: transparent; }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
