@@ -481,7 +481,9 @@
         lives in the <strong>intention</strong> that drives humanity's existential need to create. Because of this, I'm <strong>compelled</strong> to advocate for, and educate others about, <strong>AI literacy</strong>.
         I feel that now, more than ever, it's imperative to <strong>lead with authenticity</strong> in a world that's drowning in <strong>tasteless, 
         prefabricated slop</strong>. 
-      </p>
+           </p>
+      <p>
+      I put that conviction into practice — I <strong>teach Creative Writing &amp; AI</strong> at The Lifelong Learning Center and evaluate AI-generated content professionally, work that keeps me at the <strong>intersection of craft and emerging technology</strong>.
       </p>
       <p>
       I'm an <strong>artist</strong>, <strong>content strategist</strong>, and <strong>AI educator</strong> with a commitment to <strong>human-centered design</strong>. 
@@ -532,6 +534,80 @@
             <span class="skill-tag">Audio/Video Production</span>
             <span class="skill-tag">Digital Publishing</span>
              <span class="skill-tag">Music Production</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <div class="dark-room-divider"></div>
+
+    <!-- WHERE I'VE BEEN — CAREER TIMELINE -->
+    <section class="framework-section">
+      <h2>Where I've Been</h2>
+      <p class="framework-intro">15 years of shaping narratives for organizations that matter.</p>
+
+      <div class="framework-steps">
+        <!-- Step 1 -->
+        <div class="framework-step">
+          <div class="step-accent">
+            <div class="step-number">1</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label">The Foundation</div>
+            <div class="step-title">Seattle Art Museum · MOHAI · Seattle Opera · ZACH Theatre</div>
+            <p class="step-desc">Shaped large-scale messaging and campaign strategy across complex mission-driven organizations. Wrote and refined website content for rebrands and site launches, conducted stakeholder interviews across leadership and operations, and supported initiatives responsible for \$80M+ in cumulative revenue.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="framework-step">
+          <div class="step-accent">
+            <div class="step-number">2</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label">The Pivot</div>
+            <div class="step-title">Marketing Director — GreenScreens</div>
+            <p class="step-desc">Owned product messaging, campaigns, and communications strategy in partnership with executive leadership. Developed brand voice guidelines that scaled across teams and channels, and led creative work through a full rebrand and positioning initiative.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="framework-step">
+          <div class="step-accent">
+            <div class="step-number">3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label">The Bridge</div>
+            <div class="step-title">Content Writer — ParetoHealth</div>
+            <p class="step-desc">Produced content across web, campaigns, and internal communications for a healthcare technology company. Wrote within regulatory and compliance constraints while maintaining a clear, human tone, and partnered with strategy teams to align messaging with user needs.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="framework-step">
+          <div class="step-accent">
+            <div class="step-number">4</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-label">The Shift</div>
+            <div class="step-title">Features Writer — MakeUseOf</div>
+            <p class="step-desc">Developed clear, audience-first narratives explaining complex tools and workflows to non-technical readers. Balanced speed, accuracy, and craft in a high-output editorial environment while partnering with editors to align content with platform goals.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="framework-step">
+          <div class="step-accent">
+            <div class="step-number">5</div>
+          </div>
+          <div class="step-content">
+            <div class="step-label">The Current</div>
+            <div class="step-title">Instructor &amp; AI Evaluator</div>
+            <p class="step-desc">Teaching Creative Writing &amp; AI at The Lifelong Learning Center and evaluating AI-generated content for clarity, tone, and human-centered quality. Building the bridge between emerging technology and authentic human expression.</p>
           </div>
         </div>
       </div>
@@ -624,6 +700,25 @@
       </div>
     </section>
 
+       <div class="dark-room-divider"></div>
+
+    <!-- WAYS OF WORKING -->
+    <section class="about-section">
+      <h2>Ways of Working</h2>
+      <p>
+        I <strong>listen first</strong>. Kickoff calls and stakeholder conversations are where I find the real language and stories that make work feel authentic.
+      </p>
+      <p>
+        I <strong>simplify without reducing</strong> — finding sentences that respect a reader's time without erasing the substance of what you offer.
+      </p>
+      <p>
+        I treat <strong>revision as collaboration</strong>, synthesizing feedback from multiple voices into cohesive final work. <strong>Collaborative, not precious</strong> — strategy and craft over ego.
+      </p>
+      <p>
+        <strong>Calm, focused execution</strong> within defined timelines. Proactive communication in both async and live settings. <strong>User-centered decisions</strong> grounded in mission and empathy.
+      </p>
+    </section>
+
     <div class="dark-room-divider"></div>
 
       <!-- I'M NEVER NOT CREATING -->
@@ -653,8 +748,8 @@
   <!-- Framework scroll reveal -->
   <script>
     (function () {
-      const steps = document.querySelectorAll('.framework-step');
-      if (!steps.length) return;
+      const containers = document.querySelectorAll('.framework-steps');
+      if (!containers.length) return;
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -668,9 +763,12 @@
         { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
       );
 
-      steps.forEach((step, i) => {
-        step.style.transitionDelay = `${i * 120}ms`;
-        observer.observe(step);
+      containers.forEach((container) => {
+        const steps = container.querySelectorAll('.framework-step');
+        steps.forEach((step, i) => {
+          step.style.transitionDelay = `${i * 120}ms`;
+          observer.observe(step);
+        });
       });
     })();
   </script>
