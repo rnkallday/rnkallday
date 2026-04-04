@@ -184,9 +184,7 @@
             padding: 0 2rem;
         }
 
-        .video-section .monitor-frame {
-            margin-bottom: 2rem;
-        }
+  
 
         /* 16:9 responsive video wrapper */
         .video-wrapper {
@@ -204,6 +202,45 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        /* ===== VIDEO FEATURE (video + description pair) ===== */
+        .video-feature {
+            margin-bottom: 3.5rem;
+        }
+
+        .video-feature:last-child {
+            margin-bottom: 2rem;
+        }
+
+        .video-description {
+            padding: 1.25rem 0.25rem 0;
+        }
+
+        .video-description h3 {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #c0d6e4;
+            margin-bottom: 0.3rem;
+        }
+
+        .video-role {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #7DD4FC;
+            margin-bottom: 0.75rem;
+        }
+
+        .video-description p {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 400;
+            color: #8a9baa;
+            line-height: 1.75;
         }
 
   
@@ -272,6 +309,24 @@
         .web-section .section-label {
             max-width: 100%;
             padding: 0;
+        }
+
+        /* ===== WEB INTRO ===== */
+        .web-intro {
+            margin-bottom: 2rem;
+        }
+
+        .web-intro p {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #8a9baa;
+            line-height: 1.8;
+        }
+
+        .web-intro strong {
+            color: #c0d6e4;
+            font-weight: 600;
         }
 
         .web-grid {
@@ -526,68 +581,120 @@
             </div>
         </div>
 
-        <!-- ===== VIDEO PRODUCTION ===== -->
+                <!-- ===== VIDEO PRODUCTION ===== -->
         <div class="section-label"><span>Video</span></div>
 
         <div class="video-section">
 
-            <!-- YouTube: outtaluv -->
-            <div class="monitor-frame">
-                <div class="monitor-bezel">
-                    <div class="bezel-dots">
-                        <div class="bezel-dot"></div>
-                        <div class="bezel-dot"></div>
-                        <div class="bezel-dot"></div>
+            <!-- outtaluv -->
+            <div class="video-feature">
+                <div class="monitor-frame">
+                    <div class="monitor-bezel">
+                        <div class="bezel-dots">
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                        </div>
+                        <div class="bezel-title">outtaluv</div>
                     </div>
-                    <div class="bezel-title">outtaluv &mdash; Music Video</div>
+                    <div class="monitor-screen">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/8jYSjGJuXHk"
+                                title="outtaluv — Music Video"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
-                <div class="monitor-screen">
-                    <div class="video-wrapper">
-                        <iframe
-                            src="https://www.youtube.com/embed/8jYSjGJuXHk"
-                            title="outtaluv — Music Video"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+                <div class="video-description">
+                    <h3>outtaluv</h3>
+                    <div class="video-role">Music Video — Written, Composed, Produced, Directed &amp; Edited</div>
+                    <p>A queer love story built entirely from stock footage. I did all of it — composed and produced the track from scratch, directed the visual narrative, then spent hours in DaVinci Resolve painstakingly syncing every keyframe and transition to the flow of the music. The real challenge was the source material: finding clips across the internet that weren't grossly stereotypical in their representation or so obscure they couldn't carry a story. What came out the other end is a cohesive narrative made from strangers' images that somehow feels personal.</p>
                 </div>
             </div>
 
-                <!-- Local: Finish What You Started -->
-            <div class="monitor-frame">
-                <div class="monitor-bezel">
-                    <div class="bezel-dots">
-                        <div class="bezel-dot"></div>
-                        <div class="bezel-dot"></div>
-                        <div class="bezel-dot"></div>
+            <!-- Ya/Know -->
+            <div class="video-feature">
+                <div class="monitor-frame">
+                    <div class="monitor-bezel">
+                        <div class="bezel-dots">
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                        </div>
+                        <div class="bezel-title">Ya/Know</div>
                     </div>
-                    <div class="bezel-title">Finish What You Started &mdash; Music Video</div>
+                    <div class="monitor-screen">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/TgMDhmti6VQ"
+                                title="Ya/Know — Music Video"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
-                <div class="monitor-screen">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos-for-digital/finish-what-you-started.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="video-description">
+                    <h3>Ya/Know</h3>
+                    <div class="video-role">Music Video — Written, Composed, Produced, Directed &amp; Edited</div>
+                    <p>Same process — wrote and produced the track, sourced the footage, aligned every beat. This one just turned out cool.</p>
                 </div>
             </div>
 
-            <!-- Local: They Get What They Deserve -->
-            <div class="monitor-frame">
-                <div class="monitor-bezel">
-                    <div class="bezel-dots">
-                        <div class="bezel-dot"></div>
-                        <div class="bezel-dot"></div>
-                        <div class="bezel-dot"></div>
+            <!-- Finish What You Started -->
+            <div class="video-feature">
+                <div class="monitor-frame">
+                    <div class="monitor-bezel">
+                        <div class="bezel-dots">
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                        </div>
+                        <div class="bezel-title">Finish What You Started</div>
                     </div>
-                    <div class="bezel-title">They Get What They Deserve &mdash; A visual treatment of a book excerpt</div>
+                    <div class="monitor-screen">
+                        <video controls playsinline preload="metadata">
+                            <source src="assets/videos-for-digital/finish-what-you-started.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
-                <div class="monitor-screen">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos-for-digital/they-get-what-they-deserve.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="video-description">
+                    <h3>Finish What You Started</h3>
+                    <div class="video-role">Music Video — Written, Composed, Produced, Directed &amp; Edited</div>
+                    <p>Same blueprint — built the track, found the footage, synced every cut. Because it's important as a creative to finish what you started.</p>
+                </div>
+            </div>
+
+            <!-- They Get What They Deserve -->
+            <div class="video-feature">
+                <div class="monitor-frame">
+                    <div class="monitor-bezel">
+                        <div class="bezel-dots">
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                            <div class="bezel-dot"></div>
+                        </div>
+                        <div class="bezel-title">They Get What They Deserve</div>
+                    </div>
+                    <div class="monitor-screen">
+                        <video controls playsinline preload="metadata">
+                            <source src="assets/videos-for-digital/they-get-what-they-deserve.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="video-description">
+                    <h3>They Get What They Deserve</h3>
+                    <div class="video-role">Visual Experiment — Written, Narrated, Composed, Produced &amp; Edited</div>
+                    <p>An experiment. A just-for-fun visual treatment of a moment pulled from my memoir in the works — narration, backing track, and editing all mine. For a one-off creative side quest, I think I rendered something quite compelling.</p>
                 </div>
             </div>
 
@@ -601,7 +708,11 @@
         <!-- ===== WEB PROJECTS ===== -->
         <div class="web-section">
 
-            <div class="section-label"><span>Web</span></div>
+             <div class="section-label"><span>Web</span></div>
+
+            <div class="web-intro">
+                <p>During my years at the <strong>Seattle Art Museum</strong> and <strong>MOHAI</strong>, I helped build microsites for world-class exhibitions and retrospectives — Kusama, Yves Saint Laurent, Andrew Wyeth, and more. My role lived at the intersection of creative direction and execution: shaping the narrative, writing the content and image descriptions, getting into the HTML and CSS when the work called for it. These weren't vanity pages — they drove significant revenue in ticket and membership sales.</p>
+            </div>
 
             <div class="web-grid">
 
