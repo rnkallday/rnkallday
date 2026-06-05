@@ -52,14 +52,64 @@
             grid-template-columns: 1fr 1fr;
             max-width: 880px;
             margin: 0 auto;
-            padding: 1rem 3rem 4rem;
+            padding: 1rem 3rem 2rem;
             gap: 3rem;
         }
 
-        /* ===== PHOTO CARDS ===== */
-        .scrapbook-photo {
+        /* ===== SECTION DIVIDERS ===== */
+        .scrapbook-section-label {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .scrapbook-section-label::before,
+        .scrapbook-section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.12);
+        }
+
+        .scrapbook-section-label span {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.45);
+            padding: 4px 14px;
+            border-radius: 2px;
+            white-space: nowrap;
+            transform: rotate(-0.5deg);
+            display: inline-block;
+        }
+
+        /* Sub-labels (Cultural Institutions, Brand & PR) */
+        .scrapbook-sub-label {
+            grid-column: 1 / -1;
+            margin: 1.5rem 0 -0.5rem;
+        }
+
+        .scrapbook-sub-label span {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.18);
+            padding-bottom: 4px;
+            display: inline-block;
+        }
+
+        /* ===== SHARED CARD BASE (photo + clip) ===== */
+        .scrapbook-photo,
+        .scrapbook-clip {
             background: #fff;
-            padding: 10px 10px 0;
             position: relative;
             cursor: pointer;
             border: 1px solid rgba(0, 0, 0, 0.06);
@@ -70,6 +120,11 @@
             transition:
                 transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ===== PHOTO CARDS ===== */
+        .scrapbook-photo {
+            padding: 10px 10px 0;
         }
 
         .scrapbook-photo a {
@@ -84,14 +139,9 @@
             border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
-        /* Rotations — scrapbook feel */
-        .scrapbook-photo:nth-child(1) { transform: rotate(-2.5deg); }
-        .scrapbook-photo:nth-child(2) { transform: rotate(1.8deg); }
-        .scrapbook-photo:nth-child(3) { transform: rotate(1.2deg); }
-        .scrapbook-photo:nth-child(4) { transform: rotate(-1.5deg); }
-
         /* Hover: straighten, lift, expand shadow */
-        .scrapbook-photo:hover {
+        .scrapbook-photo:hover,
+        .scrapbook-clip:hover {
             transform: rotate(0deg) scale(1.06) translateY(-8px) !important;
             z-index: 10;
             box-shadow:
@@ -101,8 +151,9 @@
                 0 45px 90px rgba(0, 0, 0, 0.06);
         }
 
-        /* ===== TAPE STRIPS ===== */
-        .scrapbook-photo::before {
+        /* ===== TAPE STRIPS (shared) ===== */
+        .scrapbook-photo::before,
+        .scrapbook-clip::before {
             content: '';
             position: absolute;
             top: -10px;
@@ -117,26 +168,73 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .scrapbook-photo:nth-child(2)::before {
+        /* ===== ROTATION + TAPE COLOR CLASSES ===== */
+        .rot-a {
+            transform: rotate(-2.5deg);
+        }
+        .rot-a::before {
+            transform: translateX(-50%) rotate(1deg);
+            background: rgba(220, 215, 175, 0.55);
+            border-color: rgba(200, 195, 155, 0.25);
+        }
+
+        .rot-b {
+            transform: rotate(1.8deg);
+        }
+        .rot-b::before {
             transform: translateX(-50%) rotate(-2deg);
             background: rgba(175, 210, 200, 0.5);
             border-color: rgba(155, 195, 185, 0.25);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .scrapbook-photo:nth-child(3)::before {
+        .rot-c {
+            transform: rotate(1.2deg);
+        }
+        .rot-c::before {
             transform: translateX(-50%) rotate(0.5deg);
             width: 66px;
             background: rgba(210, 185, 200, 0.5);
             border-color: rgba(195, 170, 185, 0.25);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .scrapbook-photo:nth-child(4)::before {
+        .rot-d {
+            transform: rotate(-1.5deg);
+        }
+        .rot-d::before {
             transform: translateX(-50%) rotate(-1deg);
             background: rgba(195, 215, 175, 0.5);
             border-color: rgba(180, 200, 160, 0.25);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .rot-e {
+            transform: rotate(0.7deg);
+        }
+        .rot-e::before {
+            transform: translateX(-50%) rotate(1.5deg);
+            background: rgba(215, 200, 175, 0.5);
+            border-color: rgba(195, 180, 155, 0.25);
+        }
+
+        /* Compact rotations for dense grid */
+        .rot-s-a { transform: rotate(-1deg); }
+        .rot-s-a::before {
+            transform: translateX(-50%) rotate(0.5deg);
+            background: rgba(220, 215, 175, 0.55);
+            border-color: rgba(200, 195, 155, 0.25);
+        }
+
+        .rot-s-b { transform: rotate(0.8deg); }
+        .rot-s-b::before {
+            transform: translateX(-50%) rotate(-1deg);
+            background: rgba(175, 210, 200, 0.5);
+            border-color: rgba(155, 195, 185, 0.25);
+        }
+
+        .rot-s-c { transform: rotate(-0.6deg); }
+        .rot-s-c::before {
+            transform: translateX(-50%) rotate(0.8deg);
+            background: rgba(210, 185, 200, 0.5);
+            border-color: rgba(195, 170, 185, 0.25);
         }
 
         /* ===== CAPTIONS ===== */
@@ -163,6 +261,86 @@
             line-height: 1.3;
         }
 
+        /* ===== CLIP CARDS (image-less) ===== */
+        .scrapbook-clip {
+            padding: 1.1rem 1.1rem 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scrapbook-clip a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .clip-pub {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .clip-title {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.35;
+            flex: 1;
+            margin-bottom: 10px;
+        }
+
+        .clip-meta {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 500;
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+
+        .clip-cta {
+            display: inline-block;
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #fff;
+            background: #1a1a1a;
+            padding: 5px 12px;
+            border-radius: 3px;
+            align-self: flex-start;
+        }
+
+        .scrapbook-clip:hover .clip-cta {
+            background: #333;
+        }
+
+        /* ===== 3-COL COMPACT GRID (GreenScreens) ===== */
+        .scrapbook-3col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 3rem 2rem;
+            gap: 2.25rem;
+        }
+
+        /* Compact clip cards in 3-col are slightly smaller */
+        .scrapbook-3col .scrapbook-clip {
+            padding: 0.9rem 0.9rem 0.85rem;
+        }
+
+        .scrapbook-3col .clip-title {
+            font-size: 0.82rem;
+        }
+
         /* ===== BOOK FEATURE ===== */
         .book-feature {
             max-width: 880px;
@@ -175,7 +353,6 @@
             border: 1px solid rgba(0, 0, 0, 0.06);
             padding: 1.5rem 2rem;
             position: relative;
-            transform: rotate(0.8deg);
             cursor: pointer;
             text-decoration: none;
             color: inherit;
@@ -286,10 +463,11 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 700px) {
-            .scrapbook {
+            .scrapbook,
+            .scrapbook-3col {
                 grid-template-columns: 1fr;
                 max-width: 360px;
-                padding: 1rem 1.5rem 3rem;
+                padding: 1rem 1.5rem 2rem;
                 gap: 2.5rem;
             }
 
@@ -307,6 +485,23 @@
 
             .book-card {
                 padding: 1.25rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 701px) and (max-width: 860px) {
+            .scrapbook-3col {
+                grid-template-columns: 1fr 1fr;
+                padding: 0 2rem 2rem;
+            }
+
+            .scrapbook {
+                padding: 1rem 2rem 2rem;
+            }
+
+            .book-feature,
+            .back-link-wrapper {
+                padding-left: 2rem;
+                padding-right: 2rem;
             }
         }
     </style>
@@ -333,10 +528,15 @@
             <h1>An Assorted Collection Of My Work In Print</h1>
         </div>
 
+        <!-- ========================================
+             SECTION 1 — BYLINES & ESSAYS
+        ======================================== -->
         <div class="scrapbook">
 
-            <!-- LEFT PAGE, TOP -->
-            <div class="scrapbook-photo">
+            <div class="scrapbook-section-label"><span>Bylines &amp; Essays</span></div>
+
+            <!-- HuffPost -->
+            <div class="scrapbook-photo rot-a">
                 <a href="https://www.huffpost.com/entry/small-town-gay-coming-out_n_64090adae4b06acd7c83fe42" target="_blank" rel="noopener noreferrer">
                     <img src="assets/images/published/huffpost-preview.png" alt="HuffPost article preview">
                     <div class="scrapbook-caption">
@@ -346,8 +546,8 @@
                 </a>
             </div>
 
-            <!-- RIGHT PAGE, TOP -->
-            <div class="scrapbook-photo">
+            <!-- The Sun Magazine -->
+            <div class="scrapbook-photo rot-b">
                 <a href="https://www.thesunmagazine.org/articles/21624-cash" target="_blank" rel="noopener noreferrer">
                     <img src="assets/images/published/sun-magazine-preview.png" alt="The Sun Magazine article preview">
                     <div class="scrapbook-caption">
@@ -357,8 +557,8 @@
                 </a>
             </div>
 
-            <!-- LEFT PAGE, BOTTOM -->
-            <div class="scrapbook-photo">
+            <!-- MakeUseOf -->
+            <div class="scrapbook-photo rot-c">
                 <a href="https://www.makeuseof.com/author/rian-kochel/" target="_blank" rel="noopener noreferrer">
                     <img src="assets/images/published/makeuseof-preview.png" alt="MakeUseOf article preview">
                     <div class="scrapbook-caption">
@@ -368,8 +568,8 @@
                 </a>
             </div>
 
-            <!-- RIGHT PAGE, BOTTOM -->
-            <div class="scrapbook-photo">
+            <!-- The Nerd Stash -->
+            <div class="scrapbook-photo rot-d">
                 <a href="https://thenerdstash.com/author/riankochel/" target="_blank" rel="noopener noreferrer">
                     <img src="assets/images/published/nerdstash-preview.png" alt="The Nerd Stash author page preview">
                     <div class="scrapbook-caption">
@@ -379,20 +579,247 @@
                 </a>
             </div>
 
-        </div>
-
-        <!-- ===== BOOK ===== -->
-        <div class="book-feature">
-            <a href="https://www.amazon.com/Writers-Guide-Authentic-Ethical-Collaboration-ebook/dp/B0DMTNJXR8" target="_blank" rel="noopener noreferrer" class="book-card">
+            <!-- Book -->
+            <a href="https://www.amazon.com/Writers-Guide-Authentic-Ethical-Collaboration-ebook/dp/B0DMTNJXR8" target="_blank" rel="noopener noreferrer" class="book-card rot-c">
                 <div class="book-label">&#128214; Book &mdash; Available on Amazon</div>
                 <div class="book-title">A Writer's Guide to Authentic &amp; Ethical AI Collaboration</div>
                 <div class="book-desc">A practical guide for writers navigating the intersection of craft and AI &mdash; covering authentic voice, ethical use, and collaborative workflows.</div>
                 <span class="book-cta">View on Amazon &rarr;</span>
             </a>
+
+            <!-- Spacer -->
+            <div style="visibility:hidden;" aria-hidden="true"></div>
+
+        </div>
+
+        <!-- ========================================
+             SECTION 2 — PRINT COLLATERAL
+        ======================================== -->
+        <div class="scrapbook">
+
+            <div class="scrapbook-section-label"><span>Print Collateral</span></div>
+
+            <div class="scrapbook-sub-label"><span>Cultural Institutions &middot; Development</span></div>
+
+            <!-- Camel Brochure -->
+            <div class="scrapbook-photo rot-b">
+                <a href="assets/collateral/asian-art-museum-camel-campaign-brochure.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/published/collateral/asian-art-museum-camel-campaign-brochure-preview.png" alt="Asian Art Museum camel campaign brochure preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">Asian Art Museum</div>
+                        <div class="scrapbook-title">Preserve Today, Inspire Forever</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Camel Donor Letter -->
+            <div class="scrapbook-photo rot-d">
+                <a href="assets/collateral/asian-art-museum-camel-campaign-letter.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/published/collateral/asian-art-museum-camel-campaign-letter-preview.png" alt="Asian Art Museum donor letter preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">Asian Art Museum</div>
+                        <div class="scrapbook-title">Join Us in Restoring an Icon</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- SAM VIP Mailing -->
+            <div class="scrapbook-photo rot-a">
+                <a href="assets/collateral/sam-fund-vip-mailing.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/published/collateral/sam-fund-vip-mailing-preview.png" alt="SAM Fund VIP mailing preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">SAM Fund</div>
+                        <div class="scrapbook-title">VIP Mailing</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- SAM Fall Appeal FY19 -->
+            <div class="scrapbook-photo rot-c">
+                <a href="assets/collateral/sam-fund-fall-appeal-fy19.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/published/collateral/sam-fund-fall-appeal-fy19-preview.png" alt="SAM Fund Fall Appeal FY19 preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">SAM Fund</div>
+                        <div class="scrapbook-title">Fall Appeal (FY19)</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- SAM Fall Appeal FY18 Wyeth -->
+            <div class="scrapbook-photo rot-e">
+                <a href="assets/collateral/sam-fund-fall-appeal-fy18-wyeth.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/published/collateral/sam-fund-fall-appeal-fy18-wyeth-preview.png" alt="SAM Fund Fall Appeal FY18 Wyeth preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">SAM Fund</div>
+                        <div class="scrapbook-title">Fall Appeal (FY18) &mdash; Wyeth</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Spacer to keep odd card left-aligned -->
+            <div style="visibility:hidden;" aria-hidden="true"></div>
+
+            <div class="scrapbook-sub-label"><span>Brand &amp; PR</span></div>
+
+            <!-- Cedar Valley Interview -->
+            <div class="scrapbook-photo rot-d">
+                <a href="assets/collateral/cedar-valley-farms-josh-cutter-interview.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/published/collateral/cedar-valley-farms-josh-cutter-interview-preview.png" alt="Cedar Valley Farms Josh Cutter interview preview">
+                    <div class="scrapbook-caption">
+                        <div class="scrapbook-pub">Cedar Valley Farms</div>
+                        <div class="scrapbook-title">Interview with COO Josh Cutter</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ========================================
+             SECTION 3 — FAT NUGS MAGAZINE
+        ======================================== -->
+        <div class="scrapbook">
+
+            <div class="scrapbook-section-label"><span>Cannabis &amp; Culture Writing</span></div>
+
+            <!-- Fat Nugs 1 -->
+            <div class="scrapbook-clip rot-b">
+                <a href="https://www.fatnugsmag.com/pridecomesonceayearbutatwhatcost/" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">Fat Nugs Magazine</div>
+                    <div class="clip-title">Pride Comes Once a Year&hellip;But At What Cost?</div>
+                    <div class="clip-meta">June 2022</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Fat Nugs 2 -->
+            <div class="scrapbook-clip rot-d">
+                <a href="https://issuu.com/fatnugsmag/docs/fnm_vol_9/39" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">Fat Nugs Magazine</div>
+                    <div class="clip-title">The Magic Lives In Truth</div>
+                    <div class="clip-meta">Vol. 9 &mdash; Sept 2022, p. 39</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Fat Nugs 3 -->
+            <div class="scrapbook-clip rot-a">
+                <a href="https://issuu.com/fatnugsmag/docs/fnm_wedding_edition_1_/23" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">Fat Nugs Magazine</div>
+                    <div class="clip-title">djkind Hearts You</div>
+                    <div class="clip-meta">Wedding Edition, p. 23</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Spacer to keep third card from stretching full width -->
+            <div style="visibility:hidden;" aria-hidden="true"></div>
+
+        </div>
+
+        <!-- ========================================
+             SECTION 4 — GREENSCREENS (3-col)
+        ======================================== -->
+        <div class="scrapbook" style="padding-bottom: 0;">
+            <div class="scrapbook-section-label"><span>Brand Journalism &amp; Content</span></div>
+        </div>
+
+        <div class="scrapbook-3col">
+
+            <!-- GS 1 -->
+            <div class="scrapbook-clip rot-s-b">
+                <a href="https://greenscreens.tv/v2/blog/leading-in-crisis-an-interview-with-shawn-cutter-ceo" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">Leading in Crisis: An Interview with Shawn Cutter, CEO</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 2 -->
+            <div class="scrapbook-clip rot-s-c">
+                <a href="https://greenscreens.tv/v2/blog/3-reasons-why-we-love-our-partner-springbig" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">3 Reasons Why We Love Our Partner, Springbig</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 3 -->
+            <div class="scrapbook-clip rot-s-a">
+                <a href="https://greenscreens.tv/v2/blog/three-ways-covid-19-has-changed-the-cannabis-market-and-how-greenscreens-can-help" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">Three Ways COVID-19 Has Changed the Cannabis Market</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 4 -->
+            <div class="scrapbook-clip rot-s-c">
+                <a href="https://greenscreens.tv/v2/blog/top-5-hidden-ways-your-dispensaries-could-be-losing-money" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">Top 5 Hidden Ways Your Dispensaries Could Be Losing Money</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 5 -->
+            <div class="scrapbook-clip rot-s-a">
+                <a href="https://greenscreens.tv/v2/blog/top-5-ways-brands-can-promote-themselves-in-dispensaries" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">Top 5 Ways Brands Can Promote Themselves in Dispensaries</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 6 -->
+            <div class="scrapbook-clip rot-s-b">
+                <a href="https://greenscreens.tv/v2/blog/top-5-ways-cannabis-can-help-you-cope" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">Top 5 Ways Cannabis Can Help You Cope</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 7 -->
+            <div class="scrapbook-clip rot-s-a">
+                <a href="https://greenscreens.tv/v2/blog/top-5-ways-to-find-dispensaries" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">Top 5 Ways To Find Dispensaries</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 8 -->
+            <div class="scrapbook-clip rot-s-c">
+                <a href="https://greenscreens.tv/v2/blog/what-do-dispensaries-have-to-say-about-greenscreens" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">What Do Dispensaries Have to Say About GreenScreens?</div>
+                    <div class="clip-meta">Client Testimonials &amp; Copy</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 9 -->
+            <div class="scrapbook-clip rot-s-b">
+                <a href="https://greenscreens.tv/v2/blog/5-best-campaigns" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">5 Best Campaigns</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
+            <!-- GS 10 -->
+            <div class="scrapbook-clip rot-s-a">
+                <a href="https://greenscreens.tv/v2/blog/talking-to-kids-about-underage-cannabis-use" target="_blank" rel="noopener noreferrer">
+                    <div class="clip-pub">GreenScreens</div>
+                    <div class="clip-title">Talking to Kids About Underage Cannabis Use</div>
+                    <span class="clip-cta">Read &rarr;</span>
+                </a>
+            </div>
+
         </div>
 
         <!-- BACK LINK -->
-        <div class="back-link-wrapper">
+        <div class="back-link-wrapper" style="margin-top: 2rem;">
             <a href="work.html" class="back-link">&larr; Back to Work</a>
         </div>
 
