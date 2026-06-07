@@ -106,13 +106,15 @@
 
         .scrapbook-sub-label span {
             font-family: 'Parkinsans', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: rgba(0, 0, 0, 0.6);
-            border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
-            padding-bottom: 4px;
+            letter-spacing: 0.12em;
+            color: #1a1a1a;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 4px 10px;
+            border-radius: 3px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
             white-space: nowrap;
         }
 
@@ -453,21 +455,26 @@
             align-items: center;
             gap: 0.5rem;
             width: auto;
-            background: none;
+            background: rgba(255, 255, 255, 0.85);
             border: none;
             cursor: pointer;
-            padding: 0;
+            padding: 4px 10px;
+            border-radius: 3px;
             font-family: 'Parkinsans', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: rgba(0, 0, 0, 0.7);
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
             white-space: nowrap;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .collapse-toggle:hover {
-            color: rgba(0, 0, 0, 0.9);
+            background: #1a1a1a;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
         }
 
         .collapse-icon {
@@ -493,20 +500,24 @@
 
         .sub-label-pub-link {
             font-family: 'Parkinsans', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: rgba(0, 0, 0, 0.38);
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
             text-decoration: none;
             white-space: nowrap;
-            border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
-            padding-bottom: 1px;
-            transition: color 0.2s ease;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 3px 8px;
+            border-radius: 3px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .sub-label-pub-link:hover {
-            color: rgba(0, 0, 0, 0.72);
+            background: #1a1a1a;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
         }
 
         /* ===== COLLAPSE PREVIEW BLOCK (full-width image below toggle) ===== */
