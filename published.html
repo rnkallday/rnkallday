@@ -458,26 +458,55 @@
             cursor: pointer;
             padding: 0;
             font-family: 'Parkinsans', sans-serif;
-            font-size: 0.72rem;
+            font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: rgba(0, 0, 0, 0.6);
+            letter-spacing: 0.12em;
+            color: rgba(0, 0, 0, 0.7);
             white-space: nowrap;
         }
 
         .collapse-toggle:hover {
-            color: rgba(0, 0, 0, 0.85);
+            color: rgba(0, 0, 0, 0.9);
         }
 
         .collapse-icon {
-            font-size: 0.5rem;
+            font-size: 0.6rem;
             transition: transform 0.3s ease;
             display: inline-block;
         }
 
         .collapse-toggle[aria-expanded="false"] .collapse-icon {
             transform: rotate(180deg);
+        }
+
+        /* Sub-label with a pub link at the far right */
+        .scrapbook-sub-label.has-pub-link::after {
+            display: none;
+        }
+
+        .sub-label-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-label-pub-link {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(0, 0, 0, 0.38);
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+            padding-bottom: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .sub-label-pub-link:hover {
+            color: rgba(0, 0, 0, 0.72);
         }
 
         /* ===== COLLAPSE PREVIEW BLOCK (full-width image below toggle) ===== */
@@ -624,7 +653,11 @@
         <!-- Personal Essay -->
         <div class="scrapbook">
             <div class="scrapbook-section-label"><span>Bylines in Journalism</span></div>
-            <div class="scrapbook-sub-label"><span>Personal Essay</span></div>
+            <div class="scrapbook-sub-label has-pub-link">
+                <span>Personal Essay</span>
+                <span class="sub-label-line"></span>
+                <a href="https://www.huffpost.com/author/rian-kochel" target="_blank" rel="noopener noreferrer" class="sub-label-pub-link">HuffPost &#8599;</a>
+            </div>
 
             <div class="scrapbook-photo rot-a">
                 <a href="https://www.huffpost.com/entry/small-town-gay-coming-out_n_64090adae4b06acd7c83fe42" target="_blank" rel="noopener noreferrer">
@@ -651,12 +684,13 @@
 
         <!-- Human Interest & Politics — The Nerd Stash -->
         <div class="scrapbook" style="padding-bottom: 0;">
-            <div class="scrapbook-sub-label" style="grid-column: 1 / -1;">
+            <div class="scrapbook-sub-label has-pub-link" style="grid-column: 1 / -1;">
                 <button class="collapse-toggle" data-target="nerdstash-grid" aria-expanded="false">
                     <span>Human Interest &amp; Politics</span>
                     <span class="collapse-icon">&#9650;</span>
-                    <a href="https://thenerdstash.com/author/riankochel/" target="_blank" rel="noopener noreferrer" class="collapse-pub-link" onclick="event.stopPropagation()">The Nerd Stash &#8599;</a>
                 </button>
+                <span class="sub-label-line"></span>
+                <a href="https://thenerdstash.com/author/riankochel/" target="_blank" rel="noopener noreferrer" class="sub-label-pub-link">The Nerd Stash &#8599;</a>
             </div>
         </div>
         <div class="collapse-preview-block" id="nerdstash-preview">
@@ -709,12 +743,13 @@
 
         <!-- Tech — MakeUseOf -->
         <div class="scrapbook" style="padding-bottom: 0;">
-            <div class="scrapbook-sub-label" style="grid-column: 1 / -1;">
+            <div class="scrapbook-sub-label has-pub-link" style="grid-column: 1 / -1;">
                 <button class="collapse-toggle" data-target="muo-grid" aria-expanded="false">
                     <span>Tech</span>
                     <span class="collapse-icon">&#9650;</span>
-                    <a href="https://www.makeuseof.com/author/rian-kochel/" target="_blank" rel="noopener noreferrer" class="collapse-pub-link" onclick="event.stopPropagation()">MakeUseOf &#8599;</a>
                 </button>
+                <span class="sub-label-line"></span>
+                <a href="https://www.makeuseof.com/author/rian-kochel/" target="_blank" rel="noopener noreferrer" class="sub-label-pub-link">MakeUseOf &#8599;</a>
             </div>
         </div>
         <div class="collapse-preview-block" id="muo-preview">
@@ -817,7 +852,6 @@
                 <button class="collapse-toggle" data-target="fatnugs-grid" aria-expanded="false">
                     <span>Lifestyle</span>
                     <span class="collapse-icon">&#9650;</span>
-                    <a href="https://www.fatnugsmag.com" target="_blank" rel="noopener noreferrer" class="collapse-pub-link" onclick="event.stopPropagation()">Fat Nugs Magazine &#8599;</a>
                 </button>
             </div>
         </div>
@@ -860,7 +894,6 @@
                 <button class="collapse-toggle" data-target="gs-grid" aria-expanded="false">
                     <span>Brand Journalism &amp; Content Strategy</span>
                     <span class="collapse-icon">&#9650;</span>
-                    <a href="https://greenscreens.tv" target="_blank" rel="noopener noreferrer" class="collapse-pub-link" onclick="event.stopPropagation()">GreenScreens &#8599;</a>
                 </button>
             </div>
         </div>
