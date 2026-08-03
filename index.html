@@ -5,7 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RNKALLDAY | Word Nerd</title>
   <link rel="stylesheet" href="css/style.css">
-</head>
+<style>
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    color: #000;
+    background: #7DD4FC;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .hero-cta-secondary:hover {
+    transform: translateY(-2px);
+  }
+</style></head>
 <body class="home">
   <!-- Navigation -->
   <div class="sticky-wrapper">
@@ -27,10 +54,15 @@
         <source src="assets/hero-video.mp4" type="video/mp4">
       </video>
       <div class="overlay"></div>
-      <div class="hero-content">
-        <a href="work.html" class="hero-cta">
-          View My Work <span>→</span>
-</a>
+     <div class="hero-content">
+        <div class="hero-cta-row">
+          <a href="work.html" class="hero-cta">
+            View My Work <span>→</span>
+          </a>
+          <a href="https://buy.stripe.com/eVqeVdfGogaraxlglScEw00" class="hero-cta-secondary" target="_blank" rel="noopener">
+            Pre-Order Surviving Queer <span>→</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
