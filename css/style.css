@@ -850,3 +850,213 @@ header#home {
     font-size: 1.5rem;
   }
 }
+/* ================================
+ BOOK LANDING PAGE
+ (paste at the very bottom of style.css)
+ ================================ */
+
+.book-page {
+ flex: 1;
+ width: 100%;
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: calc(60px + var(--space-xl)) var(--space-lg) var(--space-xl);
+}
+
+.book-hero {
+ display: grid;
+ grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+ gap: clamp(2rem, 5vw, 4.5rem);
+ align-items: center;
+}
+
+.book-cover-wrap {
+ display: flex;
+ justify-content: center;
+}
+
+.book-cover-wrap a {
+ display: block;
+ max-width: 420px;
+ width: 100%;
+}
+
+.book-cover {
+ display: block;
+ width: 100%;
+ height: auto;
+ border-radius: 4px;
+ box-shadow:
+   0 2px 4px rgba(0, 0, 0, 0.3),
+   0 12px 30px rgba(0, 0, 0, 0.3),
+   0 30px 60px rgba(0, 0, 0, 0.2);
+ transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+}
+
+.book-cover-wrap a:hover .book-cover {
+ transform: translateY(-8px) scale(1.02);
+ box-shadow:
+   0 4px 8px rgba(0, 0, 0, 0.3),
+   0 18px 40px rgba(125, 212, 252, 0.35),
+   0 40px 80px rgba(134, 239, 172, 0.12);
+}
+
+.book-eyebrow {
+ font-family: var(--font-primary);
+ font-size: var(--text-sm);
+ font-weight: var(--font-weight-semibold);
+ text-transform: uppercase;
+ letter-spacing: 0.1em;
+ color: var(--color-gray);
+ margin-bottom: var(--space-xs);
+}
+
+.book-title {
+ font-family: var(--font-primary);
+ font-size: var(--text-3xl);
+ font-weight: var(--font-weight-heavy);
+ letter-spacing: -0.02em;
+ line-height: 1.05;
+ color: var(--color-black);
+}
+
+.book-subtitle {
+ font-family: var(--font-primary);
+ font-size: var(--text-xl);
+ font-weight: var(--font-weight-medium);
+ color: var(--color-gray);
+ margin-top: var(--space-xs);
+}
+
+.book-author {
+ font-family: var(--font-primary);
+ font-size: var(--text-lg);
+ font-weight: var(--font-weight-semibold);
+ color: var(--color-black);
+ margin: var(--space-sm) 0 var(--space-md);
+ padding-bottom: var(--space-md);
+ border-bottom: 3px solid var(--color-black);
+}
+
+.book-blurb {
+ font-family: var(--font-primary);
+ font-size: var(--text-base);
+ font-weight: var(--font-weight-regular);
+ color: var(--color-gray);
+ line-height: 1.8;
+ margin-bottom: var(--space-sm);
+}
+
+.book-cta-row {
+ margin-top: var(--space-md);
+}
+
+.book-cta {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: var(--space-xs);
+ font-family: var(--font-primary);
+ font-size: var(--text-lg);
+ font-weight: var(--font-weight-bold);
+ color: var(--color-black);
+ background: var(--gradient-brand);
+ padding: 16px 32px;
+ border-radius: var(--border-radius-md);
+ box-shadow: var(--shadow-color);
+ transition: all var(--transition-base);
+}
+
+.book-cta:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 12px 40px rgba(125, 212, 252, 0.3);
+ color: var(--color-black);
+}
+
+.book-cta-note {
+ font-family: var(--font-primary);
+ font-size: var(--text-sm);
+ color: var(--color-gray);
+ margin-top: var(--space-xs);
+}
+
+.book-author-section {
+ max-width: 700px;
+ margin: var(--space-xl) auto 0;
+ padding-top: var(--space-lg);
+ border-top: 3px solid var(--color-black);
+}
+
+.book-author-section h2 {
+ font-family: var(--font-primary);
+ font-size: var(--text-2xl);
+ font-weight: var(--font-weight-bold);
+ color: var(--color-black);
+ margin-bottom: var(--space-md);
+}
+
+.book-author-section p {
+ font-family: var(--font-primary);
+ font-size: var(--text-base);
+ color: var(--color-gray);
+ line-height: 1.8;
+ margin-bottom: var(--space-sm);
+}
+
+.book-cta-row--bottom {
+ margin-top: var(--space-lg);
+}
+
+/* --- Book page: tablet --- */
+@media (max-width: 900px) {
+ .book-page {
+   padding: calc(60px + var(--space-lg)) var(--space-md) var(--space-lg);
+ }
+
+ .book-title {
+   font-size: var(--text-2xl);
+ }
+}
+
+/* --- Book page: mobile (stack, cover on top) --- */
+@media (max-width: 768px) {
+ .book-page {
+   padding: calc(60px + var(--space-md)) var(--space-sm) var(--space-md);
+ }
+
+ .book-hero {
+   grid-template-columns: 1fr;
+   gap: var(--space-lg);
+ }
+
+ .book-cover-wrap a {
+   max-width: 300px;
+ }
+
+ .book-info {
+   text-align: center;
+ }
+
+ .book-blurb {
+   text-align: left;
+ }
+
+ .book-cta {
+   width: 100%;
+ }
+}
+
+@media (max-width: 480px) {
+ .book-title {
+   font-size: 1.75rem;
+ }
+
+ .book-subtitle {
+   font-size: var(--text-lg);
+ }
+
+ .book-cta {
+   font-size: var(--text-base);
+   padding: 14px 24px;
+ }
+}
