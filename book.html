@@ -28,28 +28,65 @@
 
   <!-- Book Section -->
   <main class="book-page">
-    <section class="book-hero">
-      <div class="book-cover-wrap">
-        <a href="https://www.amazon.com/dp/B0HJFGW13V?ref=ppx_yo2ov_dt_b_fed_asin_title" target="_blank" rel="noopener" aria-label="Buy Surviving Queer on Amazon">
-          <img class="book-cover" src="assets/images/surviving-queer-cover.jpg" alt="Cover of Surviving Queer: A Memoir by Rian Kochel, showing a red anatomical heart with a stitched scar on a black background">
-        </a>
+
+    <!-- Top: author reading (TikTok) + the ask -->
+    <section class="book-voice book-voice--top" aria-labelledby="voice-heading">
+      <div class="book-voice__media">
+        <div class="book-voice__tabs" role="tablist" aria-label="Readings from the book">
+          <button type="button" role="tab" aria-selected="true" data-clip="https://www.tiktok.com/player/v1/7640956271146831134?embed_from=webapp_share&amp;music_info=1&amp;description=1&amp;autoplay=0">The four seasons</button>
+          <button type="button" role="tab" aria-selected="false" data-clip="https://www.tiktok.com/player/v1/7639393123788983583?embed_from=webapp_share&amp;music_info=1&amp;description=1&amp;autoplay=0">Storytime</button>
+        </div>
+        <div class="book-voice__video">
+          <iframe data-clip-frame src="https://www.tiktok.com/player/v1/7640956271146831134?embed_from=webapp_share&amp;music_info=1&amp;description=1&amp;autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share" title="Rian Kochel reading from Surviving Queer on TikTok" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="book-voice__text">
+        <p class="book-eyebrow">A memoir &middot; Now available</p>
+        <h1 id="voice-heading" class="book-voice__title">Surviving Queer</h1>
+        <p class="book-voice__author">by Rian Kochel</p>
+        <p class="book-blurb">A blistering, fiercely funny memoir about surviving the closet in rural Montana, reclaiming your history, and breaking the cycles of family trauma.</p>
+        <p class="book-voice__caption">Hear Rian read from the book.</p>
+        <div class="book-cta-row">
+          <a href="mailto:riankochel@gmail.com?subject=Surviving%20Queer%20%E2%80%94%20review%20copy%20%2F%20interview%20request" class="book-cta">Review copy or interview <span>&rarr;</span></a>
+          <a href="https://www.amazon.com/dp/B0HJFGW13V?ref=ppx_yo2ov_dt_b_fed_asin_title" class="book-cta book-cta--ghost" target="_blank" rel="noopener">Buy on Amazon</a>
+        </div>
+        <p class="book-cta-note">Press, podcasters, and reviewers: excerpts and author interviews available on request.</p>
+      </div>
+    </section>
+
+    <!-- Podcast -->
+    <section class="book-listen" aria-labelledby="listen-heading">
+      <div class="book-listen__bars" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
 
-      <div class="book-info">
-        <p class="book-eyebrow">Now available</p>
-        <h1 class="book-title">Surviving Queer</h1>
-        <p class="book-subtitle">A Memoir</p>
-        <p class="book-author">by Rian Kochel</p>
+      <div class="book-listen__body">
+        <p class="book-listen__eyebrow">The conversation &middot; <span data-player-duration>22 min</span></p>
+        <h2 id="listen-heading" class="book-listen__title">Hear the conversation <span>this book starts.</span></h2>
+        <p class="book-listen__lede">Two hosts dig into <em>Surviving Queer</em>: the closet, rural Montana, family trauma, and the humor it takes to get through all three.</p>
 
-        <p class="book-blurb">A beautiful, blistering, and fiercely funny testament to surviving the closet, reclaiming your history, and breaking the cycles of family trauma.</p>
-        <p class="book-blurb"><em>Surviving Queer</em> is an unforgettable, raw, and poetic memoir&mdash;a love letter to every lost, lonely queer kid who has been forced to hide from their truth in order to feel safe. It carries an urgent message of indelible hope&mdash;a plea for them to hold onto their truth, carry it forward, and use it as the foundation for their future.</p>
+        <div class="sq-player" data-player>
+          <audio preload="metadata" src="assets/audio/surviving-queer-podcast.m4a"></audio>
 
-        <div class="book-cta-row">
-          <a href="https://www.amazon.com/dp/B0HJFGW13V?ref=ppx_yo2ov_dt_b_fed_asin_title" class="book-cta" target="_blank" rel="noopener">
-            Buy on Amazon <span>&rarr;</span>
-          </a>
+          <button type="button" class="sq-player__play" data-player-toggle aria-label="Play the Surviving Queer audio conversation">
+            <svg class="sq-player__icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            <svg class="sq-player__icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+          </button>
+
+          <div class="sq-player__track">
+            <input type="range" class="sq-player__seek" data-player-seek min="0" max="1000" value="0" step="1" aria-label="Seek">
+            <div class="sq-player__meta">
+              <span data-player-current>0:00</span>
+              <div class="sq-player__skips">
+                <button type="button" data-player-skip="-15" aria-label="Back 15 seconds">&minus;15s</button>
+                <button type="button" data-player-skip="30" aria-label="Forward 30 seconds">+30s</button>
+              </div>
+              <span data-player-total>22:19</span>
+            </div>
+          </div>
         </div>
-        <p class="book-cta-note">Available on Amazon. Ships worldwide.</p>
+
+        <p class="book-listen__note">An AI-generated audio companion, made with Google NotebookLM from the text of the book.</p>
       </div>
     </section>
 
@@ -57,10 +94,33 @@
       <h2>About the Author</h2>
       <p>Rian Kochel was that kid you went to high school with whose locker always looked like a bomb went off in it. Since then, he has lived a thousand different lives&mdash;all of them as messy and multifarious as that locker he left behind.</p>
       <p>This is his first book, but his personal essays have appeared in <em>The Sun Magazine</em> and <em>HuffPost</em>.</p>
-      <div class="book-cta-row book-cta-row--bottom">
-        <a href="https://www.amazon.com/dp/B0HJFGW13V?ref=ppx_yo2ov_dt_b_fed_asin_title" class="book-cta" target="_blank" rel="noopener">
-          Get Your Copy on Amazon <span>&rarr;</span>
+    </section>
+
+    <section class="book-hero book-hero--last">
+      <div class="book-cover-wrap">
+        <a href="https://www.amazon.com/dp/B0HJFGW13V?ref=ppx_yo2ov_dt_b_fed_asin_title" target="_blank" rel="noopener" aria-label="Buy Surviving Queer on Amazon">
+          <img class="book-cover" src="assets/images/surviving-queer-cover.jpg" alt="Cover of Surviving Queer: A Memoir by Rian Kochel, showing a red anatomical heart with a stitched scar on a black background">
         </a>
+      </div>
+
+      <div class="book-info">
+        <p class="book-eyebrow">About the book</p>
+        <h2 class="book-title">Surviving Queer</h2>
+        <p class="book-subtitle">A Memoir</p>
+        <p class="book-author">by Rian Kochel</p>
+
+        <p class="book-blurb">A beautiful, blistering, and fiercely funny testament to surviving the closet, reclaiming your history, and breaking the cycles of family trauma.</p>
+        <p class="book-blurb"><em>Surviving Queer</em> is an unforgettable, raw, and poetic memoir&mdash;a love letter to every lost, lonely queer kid who has been forced to hide from their truth in order to feel safe. It carries an urgent message of indelible hope&mdash;a plea for them to hold onto their truth, carry it forward, and use it as the foundation for their future.</p>
+
+        <div class="book-cta-row">
+          <a href="mailto:riankochel@gmail.com?subject=Surviving%20Queer%20%E2%80%94%20review%20copy%20%2F%20interview%20request" class="book-cta">
+            Review copy or interview <span>&rarr;</span>
+          </a>
+          <a href="https://www.amazon.com/dp/B0HJFGW13V?ref=ppx_yo2ov_dt_b_fed_asin_title" class="book-cta book-cta--ghost" target="_blank" rel="noopener">
+            Buy on Amazon
+          </a>
+        </div>
+        <p class="book-cta-note">Press, podcasters, and reviewers: excerpts and author interviews available on request.</p>
       </div>
     </section>
   </main>
@@ -72,5 +132,96 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+  /* Surviving Queer audio player */
+  (function () {
+    var root = document.querySelector('[data-player]');
+    if (!root) return;
+    var audio = root.querySelector('audio');
+    var toggle = root.querySelector('[data-player-toggle]');
+    var seek = root.querySelector('[data-player-seek]');
+    var current = root.querySelector('[data-player-current]');
+    var total = root.querySelector('[data-player-total]');
+    var durationLabel = document.querySelector('[data-player-duration]');
+    var section = document.querySelector('.book-listen');
+    var seeking = false;
+
+    function fmt(s) {
+      if (!isFinite(s)) return '0:00';
+      s = Math.floor(s);
+      var m = Math.floor(s / 60), sec = s % 60;
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+    function paint() {
+      var pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      seek.style.setProperty('--progress', pct + '%');
+    }
+
+    audio.addEventListener('loadedmetadata', function () {
+      total.textContent = fmt(audio.duration);
+      if (durationLabel) durationLabel.textContent = Math.round(audio.duration / 60) + ' min';
+    });
+    audio.addEventListener('timeupdate', function () {
+      if (seeking) return;
+      current.textContent = fmt(audio.currentTime);
+      if (audio.duration) seek.value = Math.round((audio.currentTime / audio.duration) * 1000);
+      paint();
+    });
+    audio.addEventListener('play', function () {
+      root.classList.add('is-playing'); section.classList.add('is-playing');
+      toggle.setAttribute('aria-label', 'Pause the Surviving Queer audio conversation');
+    });
+    audio.addEventListener('pause', function () {
+      root.classList.remove('is-playing'); section.classList.remove('is-playing');
+      toggle.setAttribute('aria-label', 'Play the Surviving Queer audio conversation');
+    });
+    audio.addEventListener('ended', function () { audio.currentTime = 0; });
+
+    toggle.addEventListener('click', function () {
+      if (audio.paused) { audio.play(); } else { audio.pause(); }
+    });
+    seek.addEventListener('input', function () {
+      seeking = true;
+      if (audio.duration) {
+        var t = (seek.value / 1000) * audio.duration;
+        current.textContent = fmt(t);
+        seek.style.setProperty('--progress', (seek.value / 10) + '%');
+      }
+    });
+    seek.addEventListener('change', function () {
+      if (audio.duration) audio.currentTime = (seek.value / 1000) * audio.duration;
+      seeking = false;
+    });
+    root.querySelectorAll('[data-player-skip]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var d = parseFloat(btn.getAttribute('data-player-skip'));
+        audio.currentTime = Math.max(0, Math.min((audio.duration || 0), audio.currentTime + d));
+      });
+    });
+
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Surviving Queer: The Conversation',
+        artist: 'Rian Kochel',
+        artwork: [{ src: 'assets/images/surviving-queer-cover.jpg', sizes: '512x512', type: 'image/jpeg' }]
+      });
+    }
+  })();
+  </script>
+  <script>
+  /* Reading tabs: swap TikTok clip in one player */
+  (function () {
+    var frame = document.querySelector('[data-clip-frame]');
+    var tabs = document.querySelectorAll('.book-voice__tabs [role="tab"]');
+    if (!frame || !tabs.length) return;
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        if (tab.getAttribute('aria-selected') === 'true') return;
+        tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+        frame.src = tab.getAttribute('data-clip');
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
